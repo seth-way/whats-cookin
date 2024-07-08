@@ -2,8 +2,8 @@ import { expect } from 'chai';
 import { findRecipeIngredients } from '../src/recipes';
 import recipeData from '../src/data/recipes'
 
-describe('Recipe', () => {
-  it('Should be a function', () => {
+describe('find ingredients', () => {
+  it('should be a function', () => {
     expect(findRecipeIngredients).to.be.a('function');
   });
 
