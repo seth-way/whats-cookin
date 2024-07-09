@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import ingredientsData from '../src/data/ingredients'
-import { getIngredientNames } from '../src/ingredients';
+import { estimateCostPerIngredient, getIngredientNames } from '../src/ingredients';
 
 describe('ingredient name list', () => {
 
@@ -11,5 +11,16 @@ describe('ingredient name list', () => {
         let ingredientList = getIngredientNames(ingredientsData, ingredientIDsControlList)
 
         expect(ingredientList).to.deep.equal(knownIngredientList)
+    })
+})
+
+describe('estimate cost per ingredient', () => {
+    it('should return the cost of an ingredient in cents', () => {
+        let testIngredient = {"id": 20081,"quantity": {"amount": 1.5,"unit": "c"}}
+        let testCost = 213
+
+        let result = estimateCostPerIngredient(ingredientsData, testIngredient)
+
+        expect(result).to.equal(testCost)
     })
 })
