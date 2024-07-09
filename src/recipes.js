@@ -16,4 +16,6 @@ export const estimateCostPerRecipeIngredients = (ingredientsData, recipe) => {
   );
 };
 
-export const estimateCostPerRecipe = () => {};
+export const estimateCostPerRecipe = ingredientCosts => {
+  return ingredientCosts.reduce((acc, val) => (acc += val), 0);
+};

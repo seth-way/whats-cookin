@@ -49,4 +49,15 @@ describe('estimate recipe total cost', () => {
   it('should be a function', () => {
     expect(estimateCostPerRecipe).to.be.a('function');
   });
+
+  it('should take a list of ingredient costs and return a total recipe cost', () => {
+    const testRecipeIngredientCosts = [
+      213, 291, 472, 451, 1980, 279.5, 140, 12672, 506, 308.5, 463,
+    ];
+
+    const testTotal = 17776;
+    const recipeTotal = estimateCostPerRecipe(testRecipeIngredientCosts);
+
+    expect(recipeTotal).to.equal(testTotal);
+  })
 });
