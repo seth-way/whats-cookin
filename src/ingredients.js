@@ -5,3 +5,14 @@ export const getIngredientNames = (ingredientsData, recipeIDs) => {
     })
     return recipeNameList
 }
+
+export const estimateCostPerIngredient = (ingredientsData, recipeIngredient) => {
+    // const unitCost = 0
+    let ingredient = ingredientsData.find((currentIngredient) => recipeIngredient.id === currentIngredient.id)
+    let { estimatedCostInCents } = ingredient
+    let amount = recipeIngredient.quantity.amount
+    let cost = estimatedCostInCents * amount
+
+    return cost
+
+}
