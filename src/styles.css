@@ -83,3 +83,16 @@ header {
 .recipe-drawer.unhide {
   transform: translateX(-100%);
 }
+
+.recipe-card {
+
+  width:595px;
+  aspect-ratio:4 / 5;
+  border:solid red;
+
+}
+
+.recipe-card > img{
+  width:100%;
+  height:auto;
+}
