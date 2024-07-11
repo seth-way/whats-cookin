@@ -47,7 +47,7 @@ h1 {
   align-self: center;
 }
 
-.carasel {
+.carousel {
   border: solid blue;
   width: 80vw;
   height: 90vh;
@@ -85,14 +85,12 @@ header {
 }
 
 .recipe-card {
-
   width:595px;
   aspect-ratio:4 / 5;
   border:solid red;
-
 }
 
-.recipe-card > img{
+.recipe-card > img {
   width:100%;
   height:auto;
 }
