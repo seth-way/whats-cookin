@@ -16,7 +16,7 @@ console.log(ingredientsData);
 
 window.addEventListener('load', () => {
   var drawer = document.querySelector('#recipeDrawer');
-  drawer.style.height = '100%';
+  //drawer.style.height = '100%';
   document.body.addEventListener('click', () => {
     drawer.classList.toggle('unhide');
   });
