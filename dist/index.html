@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Whats Cookin</title>
-  </head>
-  <body>
-    <h1>Whats Cookin</h1>
-  </body>
-  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-  <script src="bundle.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <title>What's Cookin'?</title>
+</head>
+
+<body>
+  <section class="recipe-drawer" id="recipeDrawer">Recipe Drawer</section>
+  <main>
+    <div class="menu-bar">
+      <img src="./images/hamburger.svg" class="hamburger" id="hamburger">
+      <h1>What's Cookin'?</h1>
+    </div>
+    <div class="carousel">carousel</div>
+  </main>
+  <container>
+    <header>
+      <div>show 'To-Cook'</div>
+      <div>Filter</div>
+      <div>Search</div>
+    </header>
+    <section class="recipe-list">Recipes List</section>
+  </container>
+</body>
+<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+<script src="bundle.js"></script>
+
 </html>
