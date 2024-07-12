@@ -18,7 +18,6 @@ export const findRecipeInstructions = (recipe) => {
     (a, b) => a.number - b.number
   );
   const instructionList = recipeInstructions.map(instruction => instruction.instruction)
-  console.log(instructionList)
   return instructionList
 };
 
