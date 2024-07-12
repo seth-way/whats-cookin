@@ -85,7 +85,20 @@ input {
   height: 3vh;
 }
 
-.recipe-list {
+#my-recipes-toggle {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 15vw;
+}
+
+#my-recipes-checkbox {
+  width: 50px;
+  transform: scale(0.5);
+}
+
+.recipes-container {
   border: solid green;
   display: flex;
   flex-wrap: wrap;
@@ -96,8 +109,7 @@ input {
 .recipe-drawer {
   position: absolute;
   top: 0%;
-  left: 0;
-  /* left: 100vw; */
+  left: 100%;
   bottom: 0;
   width: 100vw;
   /* transition: all 2s ease-in-out; */
@@ -126,16 +138,23 @@ input {
 
 #featured-recipe > div {
   display: flex;
-  /* justify-content: space-evenly; */
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  justify-content: space-evenly;
+  padding: 40px;
 }
 
 #featured-recipe article {
-  width: 10px;
+  width: 50vw;
 }
 
 aside {
-  width: 50vw;
+  flex-basis: 30%;
+  min-width: 240px;
+}
+
+article {
+  flex-basis: 70%;
 }
 
 .recipe-card {

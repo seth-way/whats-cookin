@@ -19,7 +19,8 @@
                 <li>2 spoons sugar</li>
                 <li>5 lbs grass</li>
               </ul>
-            </div>
+              </div>
+            <p id="cost-of-ingredients">Cost of Ingredients</p>
             <div id="featured-tag-list">Tags
               <span>antipasti</span>
               <span>starter</span>
@@ -48,11 +49,16 @@
     </main>
     <container>
       <header>
-        <input type="text" placeholder="show recipe"></input>
+        <div id="my-recipes-toggle">
+          <label>
+            Show My Recipes  
+          </label>
+        <input type="checkbox" id="my-recipes-checkbox"></input>
+        </div>
         <input type="text" placeholder="Filter"></input>
         <input type="text" placeholder="Search"></input>
       </header>
-      <section class="recipe-list">Recipes List</section>
+      <section class="recipes-container">Recipes List</section>
     </container>
   </body>
   <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
