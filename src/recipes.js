@@ -36,6 +36,7 @@ export const estimateCostPerRecipe = ingredientCosts => {
 };
 
 export const filterRecipesByTag = (recipesList, tag) => {
+  if (!tag) return recipesList;
   return recipesList.filter(recipe => recipe.tags.includes(tag));
 };
 
