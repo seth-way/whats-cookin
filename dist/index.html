@@ -55,8 +55,15 @@
           </label>
         <input type="checkbox" id="my-recipes-checkbox"></input>
         </div>
-        <input type="text" placeholder="Filter"></input>
-        <input type="text" placeholder="Search"></input>
+        <!-- <input type="text" placeholder="Filter" id="filter-by-tag"></input> -->
+        <label for="tags">Filter by tag:</label>
+        <select name="tags" id="filter-by-tag">
+          <!-- <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option> -->
+        </select>
+        <input type="text" placeholder="Search" id="filter-by-name"></input>
         <button class="icon-button" id="to-top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM377 271c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-87-87-87 87c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9L239 167c9.4-9.4 24.6-9.4 33.9 0L377 271z"/></svg></button>
       </header>
       <section class="recipes-container">Recipes List</section>

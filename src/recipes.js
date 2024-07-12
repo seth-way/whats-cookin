@@ -44,3 +44,17 @@ export const filterRecipesByName = (recipesList, name) => {
     recipe.name.toLowerCase().includes(name.toLowerCase())
   );
 };
+
+export const getAllRecipeTags = recipesList => {
+  return recipesList
+    .reduce((tags, recipe) => {
+      recipe.tags.forEach(tag => {
+        if (!tags.includes(tag)) {
+          tags.push(tag);
+        }
+      });
+
+      return tags;
+    }, [])
+    .sort();
+};

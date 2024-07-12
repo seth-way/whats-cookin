@@ -10,6 +10,7 @@ import {
 // --- // DOM Nodes // --- //
 var recipesContainer = document.querySelector('.recipes-container');
 var featuredRecipe = document.getElementById('featured-recipe');
+var tagFilterSelector = document.getElementById('filter-by-tag');
 // -- featured recipe -- //
 const featHeader = featuredRecipe.querySelector('h2');
 const featImg = featuredRecipe.querySelector('img');
@@ -112,4 +113,19 @@ const createTagNode = tag => {
   element.innerText = tag;
   console.log('tag element', element);
   return element;
+};
+
+export const displayRecipeTags = tags => {
+  console.log('recipe tags:', tags);
+  tagFilterSelector.appendChild(createTagSelector(''));
+  tags.forEach(tag => {
+    tagFilterSelector.appendChild(createTagSelector(tag));
+  });
+};
+
+const createTagSelector = tag => {
+  const option = document.createElement('option');
+  option.setAttribute('value', tag);
+  option.innerText = tag;
+  return option;
 };

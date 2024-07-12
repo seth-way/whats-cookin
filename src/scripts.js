@@ -7,12 +7,17 @@ import './images/hamburger.svg';
 import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
 // --- // Methods // --- //
-import { displayRecipes, updateFeaturedRecipe } from './domUpdates';
-import { findRecipe } from './recipes';
+import {
+  displayRecipes,
+  updateFeaturedRecipe,
+  displayRecipeTags,
+} from './domUpdates';
+import { findRecipe, getAllRecipeTags, filterRecipesByTag } from './recipes';
 // --- // Variables // --- //
 var featuredRecipe = {};
 var recipes = [];
 var filteredRecipes = [];
+var recipeTags = [];
 // --- // DOM Nodes // --- //
 // -- containers -- //
 const recipesContainer = document.querySelector('.recipes-container');
@@ -21,13 +26,16 @@ const featuredRecipeContainer = document.getElementById('featured-recipe');
 const closeFeaturedRecipeBtn = document.getElementById('close-featured-recipe');
 const toTopBtn = document.getElementById('to-top');
 const toBottomBtn = document.getElementById('to-bottom');
-// console.log(ingredientsData);
-// findRecipeIngredients("Dirty Steve's Original Wing Sauce")
-// displayRecipes();
+const myRecipesCheckBox = document.getElementById('my-recipes-checkbox');
+// -- other -- //
+const tagFilterInput = document.getElementById('filter-by-tag');
+const nameFilterInput = document.getElementById('filter-by-name');
 // --- // Event Listeners // --- //
 window.addEventListener('load', () => {
   recipes = recipeData; // later this will be a data fetch
   displayRecipes(recipes, recipesContainer);
+  recipeTags = getAllRecipeTags(recipeData);
+  displayRecipeTags(recipeTags);
 });
 
 recipesContainer.addEventListener('click', event => {
@@ -59,4 +67,8 @@ toBottomBtn.addEventListener('click', () => {
   });
 });
 
-recipeData.reduce((tags, tag))
+tagFilterInput.addEventListener('change', event => {
+  const tag = event.target.value;
+  filteredRecipes = filterRecipesByTag(recipes, tag);
+  displayRecipes(filteredRecipes, recipesContainer);
+});
