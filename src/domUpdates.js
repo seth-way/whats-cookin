@@ -1,32 +1,37 @@
-import recipeData from "./data/recipes";
-var recipeContainer = document.querySelector(".recipe-list");
+import recipeData from './data/recipes';
+var recipesContainer = document.querySelector('.recipes-container');
 
-window.addEventListener("load",() => displayRecipes(recipeData, recipeContainer));
 
-export const displayRecipes = (recipeList, recipeContainer) => {
-  recipeContainer.innerHTML = ""
+window.addEventListener('load', () =>
+  displayRecipes(recipeData, recipesContainer)
+);
+
+export const displayRecipes = (recipeList, recipesContainer) => {
+  recipesContainer.innerHTML = '';
   recipeList.forEach(recipe => {
-    const recipeCard = createRecipeCard(recipe)
-    recipeContainer.appendChild(recipeCard)
-  })
-  console.log(`Displaying recipes now`)
-}
+    const recipeCard = createRecipeCard(recipe);
+    recipesContainer.appendChild(recipeCard);
+  });
+  console.log(`Displaying recipes now`);
+};
 
-export const createRecipeCard = (recipe, recipeContainer) => {
-  const recipeCard = document.createElement("figure");
-  recipeCard.setAttribute("class", "recipe-card");
+export const createRecipeCard = (recipe) => {
+  const recipeCard = document.createElement('figure');
+  recipeCard.setAttribute('class', 'recipe-card');
   // recipeContainer.appendChild(recipeCard);
-  const recipeTitle = document.createElement("figcaption");
+  const recipeTitle = document.createElement('figcaption');
   recipeTitle.innerText = recipe.name;
   recipeCard.appendChild(recipeTitle);
   const recipeImage = createImage(recipe.image, `Image of ${recipe.name} dish`);
   recipeCard.appendChild(recipeImage);
-  return recipeCard
-}
+  // const recipeCardID = recipe.id
+  recipeCard.id = recipe.id
+  return recipeCard;
+};
 
 const createImage = (imageSource, imageAlt) => {
-  const recipeImg = document.createElement("img");
+  const recipeImg = document.createElement('img');
   recipeImg.src = imageSource;
   recipeImg.alt = imageAlt;
   return recipeImg;
-}
+};

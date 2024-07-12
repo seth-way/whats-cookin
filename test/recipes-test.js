@@ -10,6 +10,8 @@ import {
 import recipeData from '../src/data/recipes';
 import ingredientsData from '../src/data/ingredients';
 
+const testRecipe = recipeData[0]
+
 describe("find a recipe's ingredients", () => {
   it('should be a function', () => {
     expect(findRecipeIngredients).to.be.a('function');
@@ -22,30 +24,30 @@ describe("find a recipe's ingredients", () => {
       2050,
     ];
 
-    const ingredientIDsList = findRecipeIngredients(recipeData, recipeID);
+    const ingredientIDsList = findRecipeIngredients(recipeData, testRecipe);
 
     expect(ingredientIDsList).to.deep.equal(ingredientIDsControlList);
   });
 });
 
 describe("find a recipe's instructions", () => {
+
   it('should be a function', () => {
     expect(findRecipeInstructions).to.be.a('function');
   });
 
-  it('should find the list of ingredient ids for a given recipe', () => {
-    const recipeID = 741603;
-    const controlInstructions = [
-      'Watch how to make this recipe.',
-      'In a large bowl, whisk together buttermilk, eggs, baking powder, sugar, salt and butter.',
-      'In another large bowl mix together all-purpose flour and buckwheat flour.',
-      'Slowly add flour into the wet ingredients mixing with a whisk.',
-      'Mix until there are no lumps and the batter is smooth and velvety.',
-      'In a large cast iron skillet or flat grill pan over medium-high heat, melt a tablespoon of butter. Ladle pancake batter onto skillet to desired size. Using the ladle, form pancake into circular shape. Cook on each side for 2 to 3 minutes or until golden brown. Set pancakes aside and keep warm. Repeat with remaining ingredients.',
-      'Once completed, spread peanut butter on a pancake, layer it with sliced bananas and drizzle it with honey. Top the pancake with another pancake to form a sandwich. Repeat with remaining pancakes and serve with extra honey.',
-    ];
+  it('should list the instructions for a given recipe', () => {
 
-    const resultInstructions = findRecipeInstructions(recipeData, recipeID);
+    const controlInstructions = [
+      "In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.",
+      "Add egg and vanilla and mix until combined.",
+      "Add dry ingredients and mix on low just until incorporated. Stir in chocolate chips.Scoop the dough into 1,5 tablespoon size balls and place on a plate or sheet. Cover with saran wrap and chill at least 2 hours or overnight.When ready to bake, preheat oven to 350 degrees.",
+      "Place the cookie dough balls into ungreased muffin pan. Sprinkle with sea salt.",
+      "Bake for 9 to 10 minutes, or until you see the edges start to brown.",
+      "Remove the pan from the oven and let sit for 10 minutes before removing onto a cooling rack.Top with ice cream and a drizzle of chocolate sauce."
+      ];
+
+    const resultInstructions = findRecipeInstructions(testRecipe);
 
     expect(controlInstructions).to.deep.equal(resultInstructions);
   });
@@ -57,7 +59,6 @@ describe('estimate recipe ingredients costs', () => {
   });
 
   it('should take a recipe and return an array of the cost per ingredient', () => {
-    const testRecipe = recipeData[0];
     const testRecipeIngredientCosts = [
       213, 291, 472, 451, 1980, 279.5, 140, 12672, 506, 308.5, 463,
     ];
