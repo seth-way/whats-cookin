@@ -1,24 +1,24 @@
 import { estimateCostPerIngredient } from './ingredients';
 
-export const findRecipeIngredients = (recipesList, recipeID) => {
+export const findRecipe = (recipesList, recipeID) => {
   const recipe = recipesList.find(
     currentRecipe => currentRecipe.id === recipeID
   );
+  return recipe;
+};
+
+export const findRecipeIngredients = (ingredientsData, recipe) => {
   const recipeIngredients = recipe.ingredients;
   const ingredientList = recipeIngredients.map(ingredient => ingredient.id);
-
   return ingredientList;
 };
 
-export const findRecipeInstructions = (recipesList, recipeID) => {
-  const recipe = recipesList.find(
-    currentRecipe => currentRecipe.id === recipeID
-  );
+export const findRecipeInstructions = (recipe) => {
   const recipeInstructions = recipe.instructions.sort(
     (a, b) => a.number - b.number
   );
-
-  return recipeInstructions.map(instructionData => instructionData.instruction);
+  const instructionList = recipeInstructions.map(instruction => instruction.instruction)
+  return instructionList
 };
 
 export const estimateCostPerRecipeIngredients = (ingredientsData, recipe) => {
@@ -35,8 +35,8 @@ export const filterRecipesByTag = (recipesList, tag) => {
   return recipesList.filter(recipe => recipe.tags.includes(tag));
 };
 
-export const filterRecipesByName = (recipesList, tag) => {
+export const filterRecipesByName = (recipesList, name) => {
   return recipesList.filter(recipe =>
-    recipe.name.toLowerCase().includes(tag.toLowerCase())
+    recipe.name.toLowerCase().includes(name.toLowerCase())
   );
 };
