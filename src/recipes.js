@@ -13,12 +13,14 @@ export const findRecipeIngredients = (ingredientsData, recipe) => {
   return ingredientList;
 };
 
-export const findRecipeInstructions = (recipe) => {
+export const findRecipeInstructions = recipe => {
   const recipeInstructions = recipe.instructions.sort(
     (a, b) => a.number - b.number
   );
-  const instructionList = recipeInstructions.map(instruction => instruction.instruction)
-  return instructionList
+  const instructionList = recipeInstructions.map(
+    instruction => instruction.instruction
+  );
+  return instructionList;
 };
 
 export const estimateCostPerRecipeIngredients = (ingredientsData, recipe) => {
@@ -28,7 +30,9 @@ export const estimateCostPerRecipeIngredients = (ingredientsData, recipe) => {
 };
 
 export const estimateCostPerRecipe = ingredientCosts => {
-  return ingredientCosts.reduce((acc, val) => (acc += val), 0);
+  const totalCents = ingredientCosts.reduce((acc, val) => (acc += val), 0);
+  const dollars = (totalCents / 100).toFixed(2);
+  return dollars;
 };
 
 export const filterRecipesByTag = (recipesList, tag) => {
