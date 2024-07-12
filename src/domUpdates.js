@@ -1,7 +1,6 @@
 import recipeData from './data/recipes';
 var recipesContainer = document.querySelector('.recipes-container');
 
-
 window.addEventListener('load', () =>
   displayRecipes(recipeData, recipesContainer)
 );
@@ -15,17 +14,19 @@ export const displayRecipes = (recipeList, recipesContainer) => {
   console.log(`Displaying recipes now`);
 };
 
-export const createRecipeCard = (recipe) => {
+export const createRecipeCard = recipe => {
   const recipeCard = document.createElement('figure');
   recipeCard.setAttribute('class', 'recipe-card');
   // recipeContainer.appendChild(recipeCard);
   const recipeTitle = document.createElement('figcaption');
   recipeTitle.innerText = recipe.name;
   recipeCard.appendChild(recipeTitle);
+  const imageContainter = document.createElement('div');
+  recipeCard.appendChild(imageContainter);
   const recipeImage = createImage(recipe.image, `Image of ${recipe.name} dish`);
-  recipeCard.appendChild(recipeImage);
+  imageContainter.appendChild(recipeImage);
   // const recipeCardID = recipe.id
-  recipeCard.id = recipe.id
+  recipeCard.id = recipe.id;
   return recipeCard;
 };
 

@@ -37,15 +37,36 @@ body > * {
   width: 100%;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  border-bottom: solid black;
+.icon-button {
+  width: 40px;
+  aspect-ratio: 1 / 1;
+  border: none;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.4s ease-in-out;
+  position: absolute;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
+.icon-button > svg {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  fill: var(--accent);
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(1.3);
+  }
+}
+
+h1 {
+  align-self: center;
+}
+/*--- Landing Page ---*/
 .menu-bar {
   display: flex;
   flex-direction: row;
@@ -63,8 +84,14 @@ main {
   transform: translate(0%, -50%);
 }
 
-h1 {
-  align-self: center;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  border-bottom: solid black;
+  position: relative;
 }
 
 .carousel {
@@ -93,9 +120,25 @@ input {
   width: 15vw;
 }
 
+#to-bottom {
+  top: 1em;
+  right: 1em;
+}
+/* --- Recipes Container ---*/
 #my-recipes-checkbox {
   width: 50px;
   transform: scale(0.5);
+}
+
+container {
+  position: relative;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+container header {
+  position: sticky;
+  top: 0;
 }
 
 .recipes-container {
@@ -103,9 +146,48 @@ input {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
+.recipe-card {
+  width: 20%;
+  max-width: 250px;
+  min-width: 125px;
+  aspect-ratio: 4.5 / 5;
+  border: solid var(--accent);
+  border-radius: var(--border-radius-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover img {
+    transform: scale(1.2);
+  }
+}
+
+.recipe-card > div {
+  width: 100%;
+  aspect-ratio: 556 / 370;
+  overflow: hidden;
+}
+
+.recipe-card img {
+  width: 100%;
+  height: auto;
+  transition: all 0.5s ease-in-out;
+}
+
+#to-top {
+  position: relative;
+}
+/* --- Featured Recipe ---*/
 #featured-recipe {
   position: fixed;
   top: 0;
@@ -146,21 +228,7 @@ article {
   flex-basis: 70%;
 }
 
-.recipe-card {
-  width: 20%;
-  max-width: 250px;
-  min-width: 125px;
-  aspect-ratio: 4.5 / 5;
-  border: solid var(--accent);
-  border-radius: var(--border-radius-card);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  text-align: center;
-}
-
-.recipe-card > img {
-  width: 100%;
-  height: auto;
-  border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
+#close-featured-recipe {
+  top: 1em;
+  right: 1em;
 }
