@@ -51,7 +51,7 @@ export const displayRecipes = (recipeList, recipesContainer) => {
   });
 };
 
-const createImage = (imageSource, imageAlt) => {
+export const createImage = (imageSource, imageAlt) => {
   const recipeImg = document.createElement('img');
   recipeImg.src = imageSource;
   recipeImg.alt = imageAlt;

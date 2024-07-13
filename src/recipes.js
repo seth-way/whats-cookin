@@ -59,3 +59,6 @@ export const getAllRecipeTags = recipesList => {
     }, [])
     .sort();
 };
+
+export const getRandomRecipe = recipes =>
+  recipes[Math.floor(Math.random() * recipes.length)];

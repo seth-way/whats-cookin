@@ -12,12 +12,14 @@ import {
   displayRecipes,
   updateFeaturedRecipe,
   displayRecipeTags,
+  createImage,
 } from './domUpdates';
 import {
   findRecipe,
   getAllRecipeTags,
   filterRecipesByTag,
   filterRecipesByName,
+  getRandomRecipe,
 } from './recipes';
 import {
   getRandomUser,
@@ -31,10 +33,13 @@ var recipes = [];
 var filteredRecipes = [];
 var recipeTags = [];
 var currentUser = {};
+var landingImageRecipeIds = [];
 // --- // DOM Nodes // --- //
 // -- containers -- //
 const recipesContainer = document.querySelector('.recipes-container');
 const featuredRecipeContainer = document.getElementById('featured-recipe');
+const landingImages = document.querySelectorAll('.landing-image');
+const carouselContainer = document.querySelector('.carousel');
 // -- buttons -- //
 const closeFeaturedRecipeBtn = document.getElementById('close-featured-recipe');
 const toggleMyRecipesBtn = document.querySelector('.heart');
@@ -51,6 +56,17 @@ recipesContainer.addEventListener('click', event => {
   const recipeCard = event.target.closest('figure');
   if (recipeCard) {
     const recipeId = Number(recipeCard.id);
+    const recipe = findRecipe(recipes, recipeId);
+    featuredRecipe = { ...recipe };
+    updateFeaturedRecipe(featuredRecipe, currentUser);
+    featuredRecipeContainer.classList.add('unhide');
+  }
+});
+
+carouselContainer.addEventListener('click', event => {
+  const recipeImg = event.target.closest('img');
+  if (recipeImg) {
+    const recipeId = Number(recipeImg.id);
     const recipe = findRecipe(recipes, recipeId);
     featuredRecipe = { ...recipe };
     updateFeaturedRecipe(featuredRecipe, currentUser);
@@ -118,4 +134,24 @@ function start() {
   displayRecipeTags(recipeTags);
   currentUser = getRandomUser(usersData);
   currentUser.recipesToCook.push(412309, 741603, 562334, 507921);
+  fillLandingImages();
+}
+
+function fillLandingImages() {
+  console.log(landingImages);
+  landingImages.forEach(image => {
+    var randomRecipe = getRandomRecipe(recipes);
+    while (landingImageRecipeIds.includes(randomRecipe.id)) {
+      randomRecipe = getRandomRecipe(recipes);
+    }
+
+    landingImageRecipeIds.push(randomRecipe.id);
+    const recipeImage = createImage(
+      randomRecipe.image,
+      `Image of ${randomRecipe.name} dish`
+    );
+
+    recipeImage.id = randomRecipe.id;
+    image.appendChild(recipeImage);
+  });
 }
