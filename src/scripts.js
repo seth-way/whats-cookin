@@ -118,5 +118,4 @@ function start() {
   displayRecipeTags(recipeTags);
   currentUser = getRandomUser(usersData);
   currentUser.recipesToCook.push(412309, 741603, 562334, 507921);
-  console.log(currentUser);
 }
