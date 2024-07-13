@@ -8,8 +8,8 @@ export const getIngredientNames = (ingredients, ingredientIDs) => {
   return ingredientNamesList;
 };
 
-export const getIngredientsInfo = (ingredients, ingredientIDs) => {
-  const updatedIngredients = ingredientIDs.map(ingredient => {
+export const getIngredientsInfo = (ingredients, recipeIngredients) => {
+  const updatedIngredients = recipeIngredients.map(ingredient => {
     const ingredientInfo = ingredients.find(
       currentIngredient => currentIngredient.id === ingredient.id
     );

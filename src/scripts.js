@@ -55,7 +55,7 @@ recipesContainer.addEventListener('click', event => {
     const recipeId = Number(recipeCard.id);
     const recipe = findRecipe(allRecipes, recipeId);
     featuredRecipe = { ...recipe };
-    updateFeaturedRecipe(featuredRecipe, currentUser);
+    updateFeaturedRecipe(featuredRecipe, currentUser, allIngredients);
     featuredRecipeContainer.classList.add('unhide');
   }
 });

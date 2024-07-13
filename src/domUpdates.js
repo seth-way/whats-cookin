@@ -89,6 +89,7 @@ export const updateFeaturedRecipe = (recipe, user, allIngredients) => {
   featImg.alt = `Image of ${recipe.name} dish`;
 
   const ingredients = getIngredientsInfo(allIngredients, recipe.ingredients);
+  
   featIngredientsList.innerHTML = '';
   ingredients.forEach(ingredient =>
     featIngredientsList.appendChild(createIngredientNode(ingredient))
