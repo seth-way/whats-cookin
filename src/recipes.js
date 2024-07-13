@@ -32,7 +32,7 @@ export const estimateCostPerRecipeIngredients = (ingredientsData, recipe) => {
 export const estimateCostPerRecipe = ingredientCosts => {
   const totalCents = ingredientCosts.reduce((acc, val) => (acc += val), 0);
   const dollars = (totalCents / 100).toFixed(2);
-  return dollars;
+  return Number(dollars);
 };
 
 export const filterRecipesByTag = (recipesList, tag) => {
