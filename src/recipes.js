@@ -32,10 +32,11 @@ export const estimateCostPerRecipeIngredients = (ingredientsData, recipe) => {
 export const estimateCostPerRecipe = ingredientCosts => {
   const totalCents = ingredientCosts.reduce((acc, val) => (acc += val), 0);
   const dollars = (totalCents / 100).toFixed(2);
-  return dollars;
+  return Number(dollars);
 };
 
 export const filterRecipesByTag = (recipesList, tag) => {
+  if (!tag) return recipesList;
   return recipesList.filter(recipe => recipe.tags.includes(tag));
 };
 
@@ -44,3 +45,20 @@ export const filterRecipesByName = (recipesList, name) => {
     recipe.name.toLowerCase().includes(name.toLowerCase())
   );
 };
+
+export const getAllRecipeTags = recipesList => {
+  return recipesList
+    .reduce((tags, recipe) => {
+      recipe.tags.forEach(tag => {
+        if (!tags.includes(tag)) {
+          tags.push(tag);
+        }
+      });
+
+      return tags;
+    }, [])
+    .sort();
+};
+
+export const getRandomRecipe = recipes =>
+  recipes[Math.floor(Math.random() * recipes.length)];

@@ -10,6 +10,9 @@ import {
 // --- // DOM Nodes // --- //
 var recipesContainer = document.querySelector('.recipes-container');
 var featuredRecipe = document.getElementById('featured-recipe');
+var tagFilterSelector = document.getElementById('filter-by-tag');
+const heartIconOutlined = document.getElementById('heart-icon-outlined');
+const heartIconFilled = document.getElementById('heart-icon-filled');
 // -- featured recipe -- //
 const featHeader = featuredRecipe.querySelector('h2');
 const featImg = featuredRecipe.querySelector('img');
@@ -48,14 +51,14 @@ export const displayRecipes = (recipeList, recipesContainer) => {
   });
 };
 
-const createImage = (imageSource, imageAlt) => {
+export const createImage = (imageSource, imageAlt) => {
   const recipeImg = document.createElement('img');
   recipeImg.src = imageSource;
   recipeImg.alt = imageAlt;
   return recipeImg;
 };
 
-export const updateFeaturedRecipe = recipe => {
+export const updateFeaturedRecipe = (recipe, user) => {
   featHeader.innerText = recipe.name;
 
   featImg.src = recipe.image;
@@ -83,6 +86,20 @@ export const updateFeaturedRecipe = recipe => {
 
   featTags.innerHTML = '';
   recipe.tags.forEach(tag => featTags.appendChild(createTagNode(tag)));
+
+  updateHeartIconsByUser(recipe.id, user);
+};
+
+const updateHeartIconsByUser = (recipeId, user) => {
+  [heartIconOutlined, heartIconFilled].forEach(icon =>
+    icon.classList.remove('hidden')
+  );
+
+  if (user.recipesToCook.includes(recipeId)) {
+    heartIconOutlined.classList.add('hidden');
+  } else {
+    heartIconFilled.classList.add('hidden');
+  }
 };
 
 const createIngredientNode = ingredient => {
@@ -110,6 +127,19 @@ const createInstructionNode = instructionInfo => {
 const createTagNode = tag => {
   const element = document.createElement('span');
   element.innerText = tag;
-  console.log('tag element', element);
   return element;
+};
+
+export const displayRecipeTags = tags => {
+  tagFilterSelector.appendChild(createTagSelector(''));
+  tags.forEach(tag => {
+    tagFilterSelector.appendChild(createTagSelector(tag));
+  });
+};
+
+const createTagSelector = tag => {
+  const option = document.createElement('option');
+  option.setAttribute('value', tag);
+  option.innerText = tag;
+  return option;
 };

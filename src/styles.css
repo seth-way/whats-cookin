@@ -5,10 +5,11 @@
   --secondary: #e04c28;
   --accent: #29e0e0;
   --text-color: #426161;
-  --text2-color: #615342;
+  --text2-color: white;
   --text3-color: #614842;
   --border-radius-card: 8px;
   --shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
+  --img-aspect-ratio: 556 / 370;
 }
 
 * {
@@ -32,6 +33,14 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+
+  /* font-family: 'Gloria Hallelujah', cursive;
+  font-weight: 400;
+  font-style: normal; */
+
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 body > * {
@@ -66,6 +75,14 @@ body > * {
 
 h1 {
   align-self: center;
+  color: var(--text2-color);
+  font-family: 'Rock Salt', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.hidden {
+  display: none;
 }
 /*--- Landing Page ---*/
 .menu-bar {
@@ -76,6 +93,8 @@ h1 {
   position: relative;
   background: var(--bg-color2);
   box-shadow: var(--shadow);
+  position: absolute;
+  top: 0;
 }
 
 .hamburger {
@@ -90,14 +109,81 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   width: 100%;
   position: relative;
 }
 
 .carousel {
-  width: 80vw;
-  height: 90vh;
+  width: 60vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.landing-image {
+  aspect-ratio: var(--img-aspect-ratio);
+  width: 20vw;
+  position: absolute;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius-card);
+  overflow: hidden;
+
+  & > img {
+    width: 100%;
+    object-fit: cover;
+    transition: all 1s ease-in-out;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.landing-image > img {
+}
+
+#landing-image-1 {
+  width: 35vw;
+  position: relative;
+  z-index: 2;
+}
+
+#landing-image-2 {
+  top: 1em;
+  left: 1em;
+
+  & > img {
+    transform-origin: bottom right;
+  }
+}
+
+#landing-image-3 {
+  top: 1em;
+  right: 1em;
+  & > img {
+    transform-origin: bottom left;
+  }
+}
+
+#landing-image-4 {
+  bottom: 1em;
+  left: 1em;
+  & > img {
+    transform-origin: top right;
+  }
+}
+
+#landing-image-5 {
+  bottom: 1em;
+  right: 1em;
+  & > img {
+    transform-origin: top left;
+  }
 }
 
 input {
@@ -131,6 +217,7 @@ container {
 
 container header {
   background: var(--bg-color2);
+  color: var(--text2-color);
   display: flex;
   justify-content: space-around;
   flex-direction: row;
@@ -165,6 +252,9 @@ container header {
 
   & > div {
     border-top: inherit;
+    width: 100%;
+    aspect-ratio: var(--img-aspect-ratio);
+    overflow: hidden;
   }
 
   &:hover {
@@ -174,12 +264,6 @@ container header {
   &:hover img {
     transform: scale(1.2);
   }
-}
-
-.recipe-card > div {
-  width: 100%;
-  aspect-ratio: 556 / 370;
-  overflow: hidden;
 }
 
 .recipe-card img {
@@ -251,4 +335,9 @@ article h4 {
 #close-featured-recipe {
   top: 1em;
   right: 1em;
+}
+
+.heart {
+  top: 1em;
+  left: 1em;
 }
