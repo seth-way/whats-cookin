@@ -15,19 +15,16 @@ export const getIngredientsInfo = (ingredientsData, ingredients) => {
     );
     ingredient.name = ingredientInfo.name;
     ingredient.estimatedCostInCents = ingredientInfo.estimatedCostInCents;
-    
+
     return ingredient;
   });
 
   return updatedIngredients;
 };
 
-export const estimateCostPerIngredient = (
-  ingredientsData,
-  recipeIngredient
-) => {
+export const estimateCostPerIngredient = (ingredients, recipeIngredient) => {
   // const unitCost = 0
-  let ingredient = ingredientsData.find(
+  let ingredient = ingredients.find(
     currentIngredient => recipeIngredient.id === currentIngredient.id
   );
   let { estimatedCostInCents } = ingredient;

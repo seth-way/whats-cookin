@@ -44,9 +44,9 @@ export const filterRecipesByName = (recipesList, name) => {
   return recipesList.filter(recipe => {
     const recipeName = recipe.name.toLowerCase();
     const otherName = name.toLowerCase();
-    
-    return recipeName.includes(otherName)
-});
+
+    return recipeName.includes(otherName);
+  });
 };
 
 export const getAllRecipeTags = recipesList => {

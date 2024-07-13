@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import usersData from '../src/data/users';
-import recipeData from '../src/data/recipes';
-import { filterSampleData } from '../src/data/recipes-sample';
+//import recipeData from '../src/data/recipes';
+import { recipeSampleData } from '../src/data/recipes-sample';
 import {
   getRandomUser,
   addRecipeToUserList,
@@ -66,7 +66,7 @@ describe('add OR remove recipes from user`s recipesToCook list', () => {
 describe('filter recipes to only those in the users list', () => {
   var userList = [412309, 741603, 562334];
   it('should filter by a users list', () => {
-    const usersRecipes = filterUserRecipes(recipeData, userList);
-    expect(filterSampleData).to.deep.equal(usersRecipes);
+    const usersRecipes = filterUserRecipes(recipeSampleData, userList);
+    expect(recipeSampleData).to.deep.equal(usersRecipes);
   });
 });
