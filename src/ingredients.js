@@ -1,6 +1,6 @@
-export const getIngredientNames = (ingredientsData, ingredientIDs) => {
+export const getIngredientNames = (ingredients, ingredientIDs) => {
   const ingredientNamesList = ingredientIDs.map(id => {
-    let currentIngredient = ingredientsData.find(
+    let currentIngredient = ingredients.find(
       ingredient => ingredient.id === id
     );
     return currentIngredient.name;
@@ -8,9 +8,9 @@ export const getIngredientNames = (ingredientsData, ingredientIDs) => {
   return ingredientNamesList;
 };
 
-export const getIngredientsInfo = (ingredientsData, ingredients) => {
-  const updatedIngredients = ingredients.map(ingredient => {
-    const ingredientInfo = ingredientsData.find(
+export const getIngredientsInfo = (ingredients, ingredientIDs) => {
+  const updatedIngredients = ingredientIDs.map(ingredient => {
+    const ingredientInfo = ingredients.find(
       currentIngredient => currentIngredient.id === ingredient.id
     );
     ingredient.name = ingredientInfo.name;

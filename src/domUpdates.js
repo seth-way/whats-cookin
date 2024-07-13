@@ -1,10 +1,8 @@
-import recipeData from './data/recipes';
-import ingredientsData from './data/ingredients';
 import { getIngredientsInfo } from './ingredients';
 import {
   estimateCostPerRecipeIngredients,
   estimateCostPerRecipe,
-  getRandomRecipe
+  getRandomRecipe,
 } from './recipes';
 // --- // Variables // --- //
 
@@ -33,7 +31,7 @@ export const updateDomWithAPIData = (recipes, recipeTags, imageIds) => {
   displayRecipes(recipes, recipesContainer);
   displayRecipeTags(recipeTags);
   fillLandingImages(recipes, imageIds);
-}
+};
 
 function fillLandingImages(recipes, landImageIds) {
   landingImages.forEach(image => {
@@ -84,20 +82,20 @@ export const createImage = (imageSource, imageAlt) => {
   return recipeImg;
 };
 
-export const updateFeaturedRecipe = (recipe, user) => {
+export const updateFeaturedRecipe = (recipe, user, allIngredients) => {
   featHeader.innerText = recipe.name;
 
   featImg.src = recipe.image;
   featImg.alt = `Image of ${recipe.name} dish`;
 
-  const ingredients = getIngredientsInfo(ingredientsData, recipe.ingredients);
+  const ingredients = getIngredientsInfo(allIngredients, recipe.ingredients);
   featIngredientsList.innerHTML = '';
   ingredients.forEach(ingredient =>
     featIngredientsList.appendChild(createIngredientNode(ingredient))
   );
 
   const ingredientCosts = estimateCostPerRecipeIngredients(
-    ingredientsData,
+    allIngredients,
     recipe
   );
   const recipeTotalCost = estimateCostPerRecipe(ingredientCosts);
@@ -169,5 +167,3 @@ const createTagSelector = tag => {
   option.innerText = tag;
   return option;
 };
-
-

@@ -7,7 +7,7 @@ export const findRecipe = (recipesList, recipeID) => {
   return recipe;
 };
 
-export const findRecipeIngredients = (ingredientsData, recipe) => {
+export const findRecipeIngredients = (recipe) => {
   const recipeIngredients = recipe.ingredients;
   const ingredientList = recipeIngredients.map(ingredient => ingredient.id);
   return ingredientList;
@@ -23,9 +23,9 @@ export const findRecipeInstructions = recipe => {
   return instructionList;
 };
 
-export const estimateCostPerRecipeIngredients = (ingredientsData, recipe) => {
+export const estimateCostPerRecipeIngredients = (ingredients, recipe) => {
   return recipe.ingredients.map(ingredient =>
-    estimateCostPerIngredient(ingredientsData, ingredient)
+    estimateCostPerIngredient(ingredients, ingredient)
   );
 };
 

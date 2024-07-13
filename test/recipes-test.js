@@ -13,8 +13,6 @@ import {
   recipesWithSideDishTag,
 } from '../src/data/recipes-sample';
 import { ingredientSampleData } from '../src/data/ingredients-sample';
-// import ingredientsData from '../src/data/ingredients';
-// import recipeData from '../src/data/recipes';
 
 const testRecipe = recipeSampleData[0];
 
