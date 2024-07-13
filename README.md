@@ -15,7 +15,8 @@ This app is a recipe tracking / meal planning application that allows users to v
 - Clone the repository to your local machine.
 - `cd` into the project folder.
 - Use the `npm install` command to install the project dependencies.
-- Use the `node index.js` command to run the console application.
+- Use the `npm start` command to run webpack.
+- Check the console for the `PORT` and copy/paste `localhost:PORT` into your web browser.
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
