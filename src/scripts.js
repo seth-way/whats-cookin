@@ -3,23 +3,17 @@ import apiCalls from './apiCalls';
 // --- // Images // --- //
 import './images/turing-logo.png';
 import './images/hamburger.svg';
-// --- // Data // --- //
-import recipeData from './data/recipes';
-import ingredientsData from './data/ingredients';
-import usersData from './data/users';
 // --- // Methods // --- //
 import {
   displayRecipes,
   updateFeaturedRecipe,
-  displayRecipeTags,
-  createImage,
+  updateDomWithAPIData,
 } from './domUpdates';
 import {
   findRecipe,
   getAllRecipeTags,
   filterRecipesByTag,
   filterRecipesByName,
-  getRandomRecipe,
 } from './recipes';
 import {
   getRandomUser,
@@ -27,9 +21,12 @@ import {
   addRecipeToUserList,
   removeRecipeFromUserList,
 } from './users';
+import { fetchData } from './apiCalls';
 // --- // Variables // --- //
+var allRecipes = [];
+var allUsers = [];
+var allIngredients = [];
 var featuredRecipe = {};
-var recipes = [];
 var filteredRecipes = [];
 var recipeTags = [];
 var currentUser = {};
@@ -56,7 +53,7 @@ recipesContainer.addEventListener('click', event => {
   const recipeCard = event.target.closest('figure');
   if (recipeCard) {
     const recipeId = Number(recipeCard.id);
-    const recipe = findRecipe(recipes, recipeId);
+    const recipe = findRecipe(allRecipes, recipeId);
     featuredRecipe = { ...recipe };
     updateFeaturedRecipe(featuredRecipe, currentUser);
     featuredRecipeContainer.classList.add('unhide');
@@ -67,7 +64,7 @@ carouselContainer.addEventListener('click', event => {
   const recipeImg = event.target.closest('img');
   if (recipeImg) {
     const recipeId = Number(recipeImg.id);
-    const recipe = findRecipe(recipes, recipeId);
+    const recipe = findRecipe(allRecipes, recipeId);
     featuredRecipe = { ...recipe };
     updateFeaturedRecipe(featuredRecipe, currentUser);
     featuredRecipeContainer.classList.add('unhide');
@@ -108,50 +105,47 @@ toBottomBtn.addEventListener('click', () => {
 
 tagFilterInput.addEventListener('change', event => {
   const tag = event.target.value;
-  filteredRecipes = filterRecipesByTag(recipes, tag);
+  filteredRecipes = filterRecipesByTag(allRecipes, tag);
   displayRecipes(filteredRecipes, recipesContainer);
 });
 
 nameFilterInput.addEventListener('change', event => {
   const input = event.target.value;
-  filteredRecipes = filterRecipesByName(recipes, input);
+  filteredRecipes = filterRecipesByName(allRecipes, input);
   displayRecipes(filteredRecipes, recipesContainer);
 });
 
 myRecipesCheckBox.addEventListener('change', event => {
   if (event.target.checked) {
-    filteredRecipes = filterUserRecipes(recipes, currentUser.recipesToCook);
+    filteredRecipes = filterUserRecipes(allRecipes, currentUser.recipesToCook);
   } else {
-    filteredRecipes = [...recipes];
+    filteredRecipes = [...allRecipes];
   }
   displayRecipes(filteredRecipes, recipesContainer);
 });
 
 function start() {
-  recipes = recipeData; // later this will be a data fetch
-  displayRecipes(recipes, recipesContainer);
-  recipeTags = getAllRecipeTags(recipeData);
-  displayRecipeTags(recipeTags);
-  currentUser = getRandomUser(usersData);
-  currentUser.recipesToCook.push(412309, 741603, 562334, 507921);
-  fillLandingImages();
+  Promise.all([
+    fetchData('recipes'),
+    fetchData('ingredients'),
+    fetchData('users'),
+  ])
+    .then(data => {
+      updateGlobalVariables(...data);
+      updateDomWithAPIData(allRecipes, recipeTags, landingImageRecipeIds);
+    })
+    .catch(err => console.log(err));
 }
 
-function fillLandingImages() {
-  console.log(landingImages);
-  landingImages.forEach(image => {
-    var randomRecipe = getRandomRecipe(recipes);
-    while (landingImageRecipeIds.includes(randomRecipe.id)) {
-      randomRecipe = getRandomRecipe(recipes);
-    }
+function updateGlobalVariables(recipeData, ingredientData, usersData) {
+  const { recipes } = recipeData;
+  const { ingredients } = ingredientData;
+  const { users } = usersData;
 
-    landingImageRecipeIds.push(randomRecipe.id);
-    const recipeImage = createImage(
-      randomRecipe.image,
-      `Image of ${randomRecipe.name} dish`
-    );
+  allRecipes = recipes;
+  allIngredients = ingredients;
+  allUsers = users;
 
-    recipeImage.id = randomRecipe.id;
-    image.appendChild(recipeImage);
-  });
+  recipeTags = getAllRecipeTags(allRecipes);
+  currentUser = getRandomUser(allUsers);
 }

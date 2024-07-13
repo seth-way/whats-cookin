@@ -4,6 +4,7 @@ import { getIngredientsInfo } from './ingredients';
 import {
   estimateCostPerRecipeIngredients,
   estimateCostPerRecipe,
+  getRandomRecipe
 } from './recipes';
 // --- // Variables // --- //
 
@@ -13,6 +14,7 @@ var featuredRecipe = document.getElementById('featured-recipe');
 var tagFilterSelector = document.getElementById('filter-by-tag');
 const heartIconOutlined = document.getElementById('heart-icon-outlined');
 const heartIconFilled = document.getElementById('heart-icon-filled');
+const landingImages = document.querySelectorAll('.landing-image');
 // -- featured recipe -- //
 const featHeader = featuredRecipe.querySelector('h2');
 const featImg = featuredRecipe.querySelector('img');
@@ -27,6 +29,30 @@ const featInstructions = featuredRecipe.querySelector('#featured-instructions');
 // --- // Event Listeners // --- //
 
 // --- // Functions // --- //
+export const updateDomWithAPIData = (recipes, recipeTags, imageIds) => {
+  displayRecipes(recipes, recipesContainer);
+  displayRecipeTags(recipeTags);
+  fillLandingImages(recipes, imageIds);
+}
+
+function fillLandingImages(recipes, landImageIds) {
+  landingImages.forEach(image => {
+    var randomRecipe = getRandomRecipe(recipes);
+    while (landImageIds.includes(randomRecipe.id)) {
+      randomRecipe = getRandomRecipe(recipes);
+    }
+
+    landImageIds.push(randomRecipe.id);
+    const recipeImage = createImage(
+      randomRecipe.image,
+      `Image of ${randomRecipe.name} dish`
+    );
+
+    recipeImage.id = randomRecipe.id;
+    image.appendChild(recipeImage);
+  });
+}
+
 export const createRecipeCard = recipe => {
   const recipeCard = document.createElement('figure');
   recipeCard.setAttribute('class', 'recipe-card');
@@ -143,3 +169,5 @@ const createTagSelector = tag => {
   option.innerText = tag;
   return option;
 };
+
+
