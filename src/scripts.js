@@ -19,7 +19,12 @@ import {
   filterRecipesByTag,
   filterRecipesByName,
 } from './recipes';
-import { getRandomUser, filterUserRecipes } from './users';
+import {
+  getRandomUser,
+  filterUserRecipes,
+  addRecipeToUserList,
+  removeRecipeFromUserList,
+} from './users';
 // --- // Variables // --- //
 var featuredRecipe = {};
 var recipes = [];
@@ -32,6 +37,7 @@ const recipesContainer = document.querySelector('.recipes-container');
 const featuredRecipeContainer = document.getElementById('featured-recipe');
 // -- buttons -- //
 const closeFeaturedRecipeBtn = document.getElementById('close-featured-recipe');
+const toggleMyRecipesBtn = document.querySelector('.heart');
 const toTopBtn = document.getElementById('to-top');
 const toBottomBtn = document.getElementById('to-bottom');
 // -- other -- //
@@ -47,13 +53,27 @@ recipesContainer.addEventListener('click', event => {
     const recipeId = Number(recipeCard.id);
     const recipe = findRecipe(recipes, recipeId);
     featuredRecipe = { ...recipe };
-    updateFeaturedRecipe(featuredRecipe);
+    updateFeaturedRecipe(featuredRecipe, currentUser);
     featuredRecipeContainer.classList.add('unhide');
   }
 });
 
 closeFeaturedRecipeBtn.addEventListener('click', () => {
   featuredRecipeContainer.classList.remove('unhide');
+});
+
+toggleMyRecipesBtn.addEventListener('click', () => {
+  const icons = toggleMyRecipesBtn.querySelectorAll('svg');
+  icons.forEach(icon => {
+    icon.classList.toggle('hidden');
+  });
+
+  const { id } = featuredRecipe;
+  if (currentUser.recipesToCook.includes(id)) {
+    currentUser = removeRecipeFromUserList(currentUser, id);
+  } else {
+    currentUser = addRecipeToUserList(currentUser, id);
+  }
 });
 
 toTopBtn.addEventListener('click', () => {

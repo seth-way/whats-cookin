@@ -11,6 +11,11 @@
   --shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
 }
 
+@font-face {
+  font-family: boldLining;
+  src: url('./')
+}
+
 * {
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
@@ -66,6 +71,10 @@ body > * {
 
 h1 {
   align-self: center;
+}
+
+.hidden {
+  display: none;
 }
 /*--- Landing Page ---*/
 .menu-bar {
@@ -251,4 +260,9 @@ article h4 {
 #close-featured-recipe {
   top: 1em;
   right: 1em;
+}
+
+.heart {
+  top: 1em;
+  left: 1em;
 }
