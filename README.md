@@ -1,18 +1,45 @@
-# What's Cookin'? Starter Kit
+# 🍳🔥 [What's Cooking](https://carissahluchan.github.io/whats-cookin/) 🔥🍳
 
-The details of this project are outlined in the <a href="https://frontend.turing.edu/projects/What%27sCookin-PartOne.html" target="\__blank">project spec</a>.
+### Abstract:
+[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
 
-## Set Up
+This app is a recipe tracking / meal planning application that allows users to view recipes they want to cook & plan shopping trips around them. Users can view a list of recipes, filter them by name or tag, & choose recipes to cook.
 
-1. Within your group, decide on **one** person to have the project repository on their Github account. This person will *fork* this repository - on the top right corner of the page, click the fork button.
-1. Add all group members and your PM as collaborators on the repo  
-1. All group members should then clone down the forked repository. Since you don't want your project to be named "whats-cookin-starter-kit", add an optional argument after the repo url when cloning. The command should look like this: `git clone [remote-address] [what your group wants to name the repo]`.
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` or `npm i` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page).  
-    - `Control + C` is the command to stop running the local server. Closing the terminal without stopping the server first could allow the server to continue to run in the background and cause problems.  
-        - This command is not specific to Webpack; make note of it for future use.
-1. Do not run `npm audit fix --force`. This will update to the latest version of packages. We need to be using `webpack-dev-server@3.11.2` which is not the latest version. If you start to run into Webpack errors, first check that all group members are using the correct version.
+### Installation Instructions:
 
-## Testing
+> [!WARNING]
+> **[Node.js](https://nodejs.org/en) & [npm](https://www.npmjs.com/) are required to run this app.**<br>
+> _Please ensure you have both installed on your machine before proceeding._
 
-Mocha and chai are already set up, with a boilerplate test for you.
+- _(optional) Fork this project to your own Github account._
+- Clone the repository to your local machine.
+- `cd` into the project folder.
+- Use the `npm install` command to install the project dependencies.
+- Use the `npm start` command to run webpack.
+- Check the console for the `PORT` and copy/paste `localhost:PORT` into your web browser.
+
+### Preview of App:
+[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
+
+### Context:
+[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+
+This was project was built over a 2 week period by a team of Mod 2 Turing students. We are in our 8th week of JS instruction. This app took roughly 20 hours to complete.
+
+### Contributors:
+[//]: <> (Who worked on this application? Link to their GitHubs.)
+
+This app was built by [Carissa Hluchan](https://github.com/CarissaHluchan), [Willem Pol](https://github.com/wavpool), [Marshall Hotaling](https://github.com/marshallhotaling), & [Seth Way](https://github.com/seth-way).
+
+### Learning Goals:
+[//]: <> (What were the learning goals of this project? What tech did you work with?)
+
+- Use object & array prototype methods to perform data manipulation
+- Create a user interface that is easy to use & clearly displays information.
+- Write DRY, reusable code that follows SRP & trends toward function purity
+- Implement a robust testing suite using TDD
+- Make network requests to retrieve data
+- Collaborate productively & professionally as a team. Ensure all team members are able to be heard & contribute throughout the project.
+
+### Wins + Challenges:
+[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)

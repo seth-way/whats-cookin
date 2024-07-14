@@ -1,7 +1,6 @@
 import { expect } from 'chai';
-import usersData from '../src/data/users';
-import recipeData from '../src/data/recipes';
-import { filterSampleData } from '../src/data/recipes-sample';
+import { userSampleData } from '../src/data/users-sample';
+import { recipeSampleData } from '../src/data/recipes-sample';
 import {
   getRandomUser,
   addRecipeToUserList,
@@ -11,16 +10,16 @@ import {
 
 describe('get random user from list of users', () => {
   it('should return a member of the input array', () => {
-    const randomUser = getRandomUser(usersData);
-    const isInUsersArray = usersData.includes(randomUser);
+    const randomUser = getRandomUser(userSampleData);
+    const isInUsersArray = userSampleData.includes(randomUser);
     expect(isInUsersArray).to.be.true;
   });
 
   it('should not always return the same user', () => {
-    const randomUser = getRandomUser(usersData);
+    const randomUser = getRandomUser(userSampleData);
     const randomIDs = [];
     for (let i = 0; i < 10; i += 1) {
-      const { id } = getRandomUser(usersData);
+      const { id } = getRandomUser(userSampleData);
       randomIDs.push(id);
     }
     const allSameUser = randomIDs.every(id => id === randomUser.id);
@@ -29,7 +28,7 @@ describe('get random user from list of users', () => {
 });
 
 describe('add OR remove recipes from user`s recipesToCook list', () => {
-  var user = usersData[0];
+  var user = userSampleData[0];
   beforeEach(() => {
     user.recipesToCook.push(412309, 741603, 562334);
   });
@@ -66,7 +65,7 @@ describe('add OR remove recipes from user`s recipesToCook list', () => {
 describe('filter recipes to only those in the users list', () => {
   var userList = [412309, 741603, 562334];
   it('should filter by a users list', () => {
-    const usersRecipes = filterUserRecipes(recipeData, userList);
-    expect(filterSampleData).to.deep.equal(usersRecipes);
+    const usersRecipes = filterUserRecipes(recipeSampleData, userList);
+    expect(recipeSampleData).to.deep.equal(usersRecipes);
   });
 });

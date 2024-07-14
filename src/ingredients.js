@@ -1,6 +1,6 @@
-export const getIngredientNames = (ingredientsData, ingredientIDs) => {
+export const getIngredientNames = (ingredients, ingredientIDs) => {
   const ingredientNamesList = ingredientIDs.map(id => {
-    let currentIngredient = ingredientsData.find(
+    let currentIngredient = ingredients.find(
       ingredient => ingredient.id === id
     );
     return currentIngredient.name;
@@ -8,26 +8,23 @@ export const getIngredientNames = (ingredientsData, ingredientIDs) => {
   return ingredientNamesList;
 };
 
-export const getIngredientsInfo = (ingredientsData, ingredients) => {
-  const updatedIngredients = ingredients.map(ingredient => {
-    const ingredientInfo = ingredientsData.find(
+export const getIngredientsInfo = (ingredients, recipeIngredients) => {
+  const updatedIngredients = recipeIngredients.map(ingredient => {
+    const ingredientInfo = ingredients.find(
       currentIngredient => currentIngredient.id === ingredient.id
     );
     ingredient.name = ingredientInfo.name;
     ingredient.estimatedCostInCents = ingredientInfo.estimatedCostInCents;
-    
+
     return ingredient;
   });
 
   return updatedIngredients;
 };
 
-export const estimateCostPerIngredient = (
-  ingredientsData,
-  recipeIngredient
-) => {
+export const estimateCostPerIngredient = (ingredients, recipeIngredient) => {
   // const unitCost = 0
-  let ingredient = ingredientsData.find(
+  let ingredient = ingredients.find(
     currentIngredient => recipeIngredient.id === currentIngredient.id
   );
   let { estimatedCostInCents } = ingredient;
