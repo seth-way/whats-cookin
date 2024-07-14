@@ -27,9 +27,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: Avenir, serif;
   position: relative;
-  /* overflow-x: hidden; */
   width: 100%;
   margin: 0;
   padding: 0;
@@ -79,6 +77,8 @@ h1 {
   font-family: 'Rock Salt', cursive;
   font-weight: 400;
   font-style: normal;
+  font-size: min(4vw, 70px);
+  margin: 0;
 }
 
 .hidden {
@@ -113,6 +113,7 @@ main {
   height: 100vh;
   width: 100%;
   position: relative;
+  background-color: var(--text3-color);
 }
 
 .carousel {
@@ -186,11 +187,11 @@ main {
   }
 }
 
-input {
-  width: 20vw;
-  height: 3vh;
+#to-bottom {
+  top: 1em;
+  right: 1em;
 }
-
+/* --- Recipes Container ---*/
 #my-recipes-toggle {
   display: flex;
   flex-direction: row;
@@ -199,20 +200,58 @@ input {
   width: 15vw;
 }
 
-#to-bottom {
-  top: 1em;
-  right: 1em;
-}
-/* --- Recipes Container ---*/
 #my-recipes-checkbox {
-  width: 50px;
-  transform: scale(0.5);
+  width: 45px;
+  aspect-ratio: 1 / 1;
+  transform: 0.5;
 }
+
+.show-my-recipes-lable {
+  width: 20vw;
+  font-size: 1.6vw;
+}
+
+.filter-tag-box {
+  width: 30vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#filter-by-tag {
+  width: 20vw;
+  height: 3.5vw;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.6vw;
+}
+
+.filter-by-tag-lable {
+  font-size: 1.7vw;
+}
+
+.search-box {
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-by-name {
+  width: 30vw;
+  height: 3vw;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  font-size: 1.6vw;
+}
+
 
 container {
   position: relative;
   height: 100vh;
   overflow-y: scroll;
+  background-color: var(--text3-color);
 }
 
 container header {
@@ -233,6 +272,9 @@ container header {
   flex-wrap: wrap;
   justify-content: space-evenly;
   overflow-y: scroll;
+  background-color: var(--text3-color);
+  font-size: min(1.60vw, 23px);
+  font-weight: bold;
 }
 
 .recipe-card {
@@ -249,6 +291,7 @@ container header {
   text-align: center;
   overflow: hidden;
   box-shadow: var(--shadow);
+  background-color: var(--bg-color1);
 
   & > div {
     border-top: inherit;
@@ -278,6 +321,7 @@ container header {
 /* --- Featured Recipe ---*/
 #featured-recipe {
   position: fixed;
+  gap: 2em;
   top: 0;
   left: 120vw;
   height: 100vh;
@@ -288,7 +332,7 @@ container header {
   flex-direction: column;
   align-items: center;
   z-index: 3;
-  transition: all 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out;
 }
 
 #featured-recipe.unhide {
@@ -312,7 +356,7 @@ aside {
   min-width: 240px;
 }
 
-article {
+.article-style {
   flex-basis: 70%;
 }
 
@@ -340,4 +384,20 @@ article h4 {
 .heart {
   top: 1em;
   left: 1em;
+}
+
+h2 {
+  flex: 0 0 auto;
+}
+
+#featured-recipe > img {
+  border-radius: var(--border-radius-card);
+}
+
+h4 {
+  margin-block-end: 0.2em;
+}
+
+#featured-recipe p {
+margin-block-start: 0em;
 }
