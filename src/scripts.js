@@ -22,6 +22,7 @@ import {
   removeRecipeFromUserList,
 } from './users';
 import { fetchData } from './apiCalls';
+import { createSlider } from './slider';
 // --- // Variables // --- //
 var allRecipes = [];
 var allUsers = [];
@@ -60,16 +61,16 @@ recipesContainer.addEventListener('click', event => {
   }
 });
 
-carouselContainer.addEventListener('click', event => {
-  const recipeImg = event.target.closest('img');
-  if (recipeImg) {
-    const recipeId = Number(recipeImg.id);
-    const recipe = findRecipe(allRecipes, recipeId);
-    featuredRecipe = { ...recipe };
-    updateFeaturedRecipe(featuredRecipe, currentUser, allIngredients);
-    featuredRecipeContainer.classList.add('unhide');
-  }
-});
+// carouselContainer.addEventListener('click', event => {
+//   const recipeImg = event.target.closest('img');
+//   if (recipeImg) {
+//     const recipeId = Number(recipeImg.id);
+//     const recipe = findRecipe(allRecipes, recipeId);
+//     featuredRecipe = { ...recipe };
+//     updateFeaturedRecipe(featuredRecipe, currentUser, allIngredients);
+//     featuredRecipeContainer.classList.add('unhide');
+//   }
+// });
 
 closeFeaturedRecipeBtn.addEventListener('click', () => {
   featuredRecipeContainer.classList.remove('unhide');
@@ -133,6 +134,7 @@ function start() {
     .then(data => {
       updateGlobalVariables(...data);
       updateDomWithAPIData(allRecipes, recipeTags, landingImageRecipeIds);
+      createSlider();
     })
     .catch(err => console.log(err));
 }

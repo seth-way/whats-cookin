@@ -109,7 +109,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: 99vh;
   width: 100%;
   position: relative;
@@ -340,4 +340,34 @@ article h4 {
 .heart {
   top: 1em;
   left: 1em;
+}
+/*--- Carousel ---*/
+#recipe-carousel {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  height: 50vh !important;
+  width: calc(50vh * 4.5 / 5) !important;
+  border: solid thin var(--text-color);
+  border-radius: var(--border-radius-card);
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25em;
+  background: white;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
