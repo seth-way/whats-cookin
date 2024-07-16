@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,8 +17,8 @@
 
 <body>
   <section id="featured-recipe">
-    <h2></h2>
-    <img>
+    <h2>Featured Recipe Title Placeholder</h2>
+    <img alt="featured recipe image placeholder">
     <div>
       <aside>
         <div>
@@ -36,13 +36,13 @@
         <article id="featured-instructions"></article>
       </div>
     </div>
-    <button class="icon-button" id="close-featured-recipe">
+    <button class="icon-button" id="close-featured-recipe" aria-label="close featured recipe">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <path
           d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
       </svg>
     </button>
-    <button class="icon-button heart">
+    <button class="icon-button heart" aria-label="add or remove recipe to my recipe's list">
       <svg id='heart-icon-outlined' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <path fill="#e04c29"
           d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z" />
@@ -55,17 +55,23 @@
   </section>
   <main>
     <div class="menu-bar">
-      <img src="./images/hamburger.svg" class="hamburger" id="hamburger" />
+      <img src="./images/hamburger.svg" class="hamburger" id="hamburger" alt="hamburger menu icon"/>
       <h1>What's Cookin'?</h1>
     </div>
-    <div class="carousel">
-      <div class="landing-image" id="landing-image-1"></div>
-      <div class="landing-image" id="landing-image-2"></div>
-      <div class="landing-image" id="landing-image-3"></div>
-      <div class="landing-image" id="landing-image-4"></div>
-      <div class="landing-image" id="landing-image-5"></div>
-    </div>
-    <button class="icon-button" id="to-bottom">
+    <section id="recipe-carousel">
+      <div class="swiper recipe-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+          <div class="swiper-slide"></div>
+        </div>
+      </div>
+    </section>
+    <button class="icon-button" id="to-bottom" aria-label="scroll to all recipes section">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <path
           d="M256 0a256 256 0 1 0 0 512A256 256 0 1 0 256 0zM135 241c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l87 87 87-87c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L273 345c-9.4 9.4-24.6 9.4-33.9 0L135 241z" />
@@ -74,20 +80,20 @@
   </main>
   <container>
     <header>
-      <div id="my-recipes-toggle">
-        <label class="show-my-recipes-lable">
+      <form id="my-recipes-toggle" role="form">
+        <label class="show-my-recipes-lable" for="my-recipes-checkbox">
           Show My Recipes
         </label>
-        <input type="checkbox" id="my-recipes-checkbox"></input>
-      </div>
-      <div class="filter-tag-box">
-        <label for="tags" class="filter-by-tag-lable">Filter By Tag</label>
-        <select cname="tags" id="filter-by-tag"></select>
-      </div>
-      <div class="search-box">
-        <input class="search-by-name" type="text" placeholder="Search by Name" id="filter-by-name"></input>
-      </div>
-      <button class="icon-button" id="to-top">
+        <input type="checkbox" id="my-recipes-checkbox" name="filter my recipes" aria-label="show my recipes checkbox">
+      </form>
+      <form class="filter-tag-box" role="form">
+        <label for="filter-by-tag" class="filter-by-tag-lable">Filter By Tag</label>
+        <select name="recipe tags filter" id="filter-by-tag" aria-label="filter recipes by tag"></select>
+      </form>
+      <form class="search-box" role="form">
+        <input class="search-by-name" type="text" placeholder="Search by Name" id="filter-by-name" aria-label="search recipes by name"></input>
+      </form>
+      <button class="icon-button" id="to-top" aria-label="scroll to landing page">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path
             d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM377 271c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-87-87-87 87c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9L239 167c9.4-9.4 24.6-9.4 33.9 0L377 271z" />

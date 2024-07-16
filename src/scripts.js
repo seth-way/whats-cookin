@@ -22,7 +22,6 @@ import {
   removeRecipeFromUserList,
 } from './users';
 import { fetchData } from './apiCalls';
-import { createSlider } from './slider';
 // --- // Variables // --- //
 var allRecipes = [];
 var allUsers = [];
@@ -37,7 +36,7 @@ var landingImageRecipeIds = [];
 const recipesContainer = document.querySelector('.recipes-container');
 const featuredRecipeContainer = document.getElementById('featured-recipe');
 const landingImages = document.querySelectorAll('.landing-image');
-const carouselContainer = document.querySelector('.carousel');
+const recipeCarousel = document.getElementById('recipe-carousel');
 // -- buttons -- //
 const closeFeaturedRecipeBtn = document.getElementById('close-featured-recipe');
 const toggleMyRecipesBtn = document.querySelector('.heart');
@@ -61,16 +60,16 @@ recipesContainer.addEventListener('click', event => {
   }
 });
 
-// carouselContainer.addEventListener('click', event => {
-//   const recipeImg = event.target.closest('img');
-//   if (recipeImg) {
-//     const recipeId = Number(recipeImg.id);
-//     const recipe = findRecipe(allRecipes, recipeId);
-//     featuredRecipe = { ...recipe };
-//     updateFeaturedRecipe(featuredRecipe, currentUser, allIngredients);
-//     featuredRecipeContainer.classList.add('unhide');
-//   }
-// });
+recipeCarousel.addEventListener('click', event => {
+  const slide = event.target.closest('.swiper-slide');
+  if (slide) {
+    const recipeId = Number(slide.id.split('-')[0]);
+    const recipe = findRecipe(allRecipes, recipeId);
+    featuredRecipe = { ...recipe };
+    updateFeaturedRecipe(featuredRecipe, currentUser, allIngredients);
+    featuredRecipeContainer.classList.add('unhide');
+  }
+});
 
 closeFeaturedRecipeBtn.addEventListener('click', () => {
   featuredRecipeContainer.classList.remove('unhide');
@@ -134,7 +133,6 @@ function start() {
     .then(data => {
       updateGlobalVariables(...data);
       updateDomWithAPIData(allRecipes, recipeTags, landingImageRecipeIds);
-      createSlider();
     })
     .catch(err => console.log(err));
 }
