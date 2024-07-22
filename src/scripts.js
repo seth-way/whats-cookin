@@ -46,6 +46,7 @@ const toBottomBtn = document.getElementById('to-bottom');
 const myRecipesCheckBox = document.getElementById('my-recipes-checkbox');
 const tagFilterInput = document.getElementById('filter-by-tag');
 const nameFilterInput = document.getElementById('filter-by-name');
+const searchBox = document.querySelector('.search-box')
 // --- // Event Listeners // --- //
 window.addEventListener('load', start);
 
@@ -113,6 +114,10 @@ nameFilterInput.addEventListener('change', event => {
   const input = event.target.value;
   filteredRecipes = filterRecipesByName(allRecipes, input);
   displayRecipes(filteredRecipes, recipesContainer);
+});
+
+searchBox.addEventListener('submit', event => {
+  event.preventDefault();
 });
 
 myRecipesCheckBox.addEventListener('change', event => {

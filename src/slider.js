@@ -51,7 +51,7 @@ export const createSlider = recipes => {
     centeredSlides: true,
     //loop: true,
     slidesPerView: 'auto',
-    autoplay: { delay: 3000 },
+    autoplay: { delay: 2000 },
     coverflowEffect: {
       depth: 100,
       modifier: 1.2,
