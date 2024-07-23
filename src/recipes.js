@@ -47,6 +47,12 @@ export const updateAllRecipesWithCost = (ingredientData, allRecipes) => {
   return updatedRecipes
 };
 
+export const filterRecipesByCost = (allRecipes, minCost, maxCost) => {
+  const filterByCost = allRecipes.filter(recipe =>
+    recipe.totalCost >= minCost && recipe.totalCost <= maxCost)
+  return filterByCost
+}
+
 export const filterRecipesByTag = (recipesList, tag) => {
   if (!tag) return recipesList;
   return recipesList.filter(recipe => recipe.tags.includes(tag));
