@@ -35,6 +35,18 @@ export const estimateCostPerRecipe = ingredientCosts => {
   return Number(dollars);
 };
 
+export const updateRecipeWithCost = (ingredientsData, recipe) => {
+  const ingredientCosts = estimateCostPerRecipeIngredients(ingredientsData, recipe)
+  const totalCost = estimateCostPerRecipe(ingredientCosts)
+  recipe.totalCost = totalCost
+  return recipe
+};
+
+export const updateAllRecipesWithCost = (ingredientData, allRecipes) => {
+  const updatedRecipes = allRecipes.map(recipe => updateRecipeWithCost(ingredientData, recipe))
+  return updatedRecipes
+};
+
 export const filterRecipesByTag = (recipesList, tag) => {
   if (!tag) return recipesList;
   return recipesList.filter(recipe => recipe.tags.includes(tag));
