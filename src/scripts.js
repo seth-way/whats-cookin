@@ -12,6 +12,7 @@ import {
 import {
   findRecipe,
   getAllRecipeTags,
+  updateAllRecipesWithCost,
   filterRecipesByTag,
   filterRecipesByName,
 } from './recipes';
@@ -147,9 +148,10 @@ function updateGlobalVariables(recipeData, ingredientData, usersData) {
   const { ingredients } = ingredientData;
   const { users } = usersData;
 
-  allRecipes = recipes;
+  allRecipes = updateAllRecipesWithCost(ingredients, recipes);
   allIngredients = ingredients;
   allUsers = users;
+allRecipes.forEach(recipe => console.log(recipe.totalCost))
 
   recipeTags = getAllRecipeTags(allRecipes);
   currentUser = getRandomUser(allUsers);
