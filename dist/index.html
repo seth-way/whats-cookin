@@ -80,30 +80,47 @@
   </main>
   <container>
     <header>
-      <form id="my-recipes-toggle" role="form">
-        <label class="show-my-recipes-lable" for="my-recipes-checkbox">
+      <form id="my-recipes-toggle">
+        <label class="filter-label" for="my-recipes-checkbox">
           Show My Recipes
         </label>
         <input type="checkbox" id="my-recipes-checkbox" name="filter my recipes" aria-label="show my recipes checkbox">
       </form>
-      <form class="filter-options" role="form">
-        <label for="filter-options" class="filter-by-tag-lable">Filter By</label>
+      <form class="filter-options">
+        <label for="filter-options" class="filter-label">Filter By</label>
         <select name="filter options menu" id="filter-options" aria-label="recipe filter options">
           <option value="tag" selected>Tag</option>
           <option value="cost">Cost</option>
         </select>
       </form>
-      <form class="filter-tag-box" role="form">
-        <label for="filter-by-tag" class="filter-by-tag-lable">Tags</label>
+      <form class="filter-tag-box">
+        <label for="filter-by-tag" class="filter-label">Tags</label>
         <select name="recipe tags filter" id="filter-by-tag" aria-label="filter recipes by tag"></select>
       </form>
-      <form class="filter-cost-box hidden" role="form">
+      <form class="cost-range-slider-box hidden">
+        <div>
+          <label for="min-cost-filter" class="filter-label">min. $</label>
+          <input name="min cost filter" type="text" id="min-cost-filter" class="cost-filter"/>
+        </div>
+        <div class="double-range-slider">
+          <span class="range-track" id="cost-range-track"></span>
+          <input type="range" class="min" min="0" max="100" value="0" step="0" />
+          <input type="range" class="max" min="0" max="100" value="20" step="0" />
+          <!-- <div class="min-cost"></div>
+          <div class="max-cost"></div> -->
+        </div>
+        <div>
+          <label for="max-cost-filter" class="filter-label">max. $</label>
+          <input name="max cost filter" type="text" id="max-cost-filter" class="cost-filter"/>
+        </div>
+      </form>
+      <!-- <form class="filter-cost-box hidden" role="form">
         <label for="filter-by-cost-min" class="filter-by-cost-lable">Min: </label>
         <input name="recipe minimum cost filter" id="filter-by-min-cost" type="text" aria-label="filter recipes by minimum cost">
         <label for="filter-by-cost-max" class="filter-by-cost-lable">Max: </label>
         <input name="recipe maximum cost filter" id="filter-by-max-cost" type="text" aria-label="filter recipes by maximum cost">
-      </form>
-      <form class="search-box" role="form">
+      </form> -->
+      <form class="search-box">
         <input class="search-by-name" type="text" placeholder="Search by Name" id="filter-by-name" aria-label="search recipes by name"></input>
       </form>
       <button class="icon-button" id="to-top" aria-label="scroll to landing page">
