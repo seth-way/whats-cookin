@@ -3,9 +3,12 @@ export const getIngredientNames = (ingredients, ingredientIDs) => {
     let currentIngredient = ingredients.find(
       ingredient => ingredient.id === id
     );
+    if (!currentIngredient) {
+      return '';
+    }
     return currentIngredient.name;
   });
-  return ingredientNamesList;
+  return ingredientNamesList.filter(ingredient => ingredient !== '');
 };
 
 export const getIngredientsInfo = (ingredients, recipeIngredients) => {
@@ -27,6 +30,9 @@ export const estimateCostPerIngredient = (ingredients, recipeIngredient) => {
   let ingredient = ingredients.find(
     currentIngredient => recipeIngredient.id === currentIngredient.id
   );
+  if (!ingredient) {
+    return 0;
+  }
   let { estimatedCostInCents } = ingredient;
   let amount = recipeIngredient.quantity.amount;
   let cost = estimatedCostInCents * amount;
