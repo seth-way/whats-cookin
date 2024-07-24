@@ -84,7 +84,7 @@
         <label class="show-my-recipes-label" for="my-recipes-checkbox">
           Show My Recipes
         </label>
-        <input type="checkbox" id="my-recipes-checkbox" name="filter my recipes" aria-label="show my recipes checkbox">
+        <input type="checkbox" id="my-recipes-checkbox" name="filter my recipes" aria-label="show my recipes checkbox" aria-checked="false">
       </form>
       <form class="filter-options">
         <label for="filter-options" class="filter-by-tag-label">Filter By</label>
@@ -98,9 +98,9 @@
         <select name="recipe tags filter" id="filter-by-tag" aria-label="filter recipes by tag"></select>
       </form>
       <form class="filter-cost-box hidden">
-        <label for="filter-by-cost-min" class="filter-by-cost-lable">Min: </label>
+        <label for="filter-by-cost-min" class="filter-by-cost-label" id="filter-by-cost-min">Min: </label>
         <input name="recipe minimum cost filter" id="filter-by-min-cost" type="text" aria-label="filter recipes by minimum cost">
-        <label for="filter-by-cost-max" class="filter-by-cost-lable">Max: </label>
+        <label for="filter-by-cost-max" class="filter-by-cost-label" id="filter-by-cost-max">Max: </label>
         <input name="recipe maximum cost filter" id="filter-by-max-cost" type="text" aria-label="filter recipes by maximum cost">
       </form>
       <form class="search-box">
