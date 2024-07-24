@@ -15,6 +15,7 @@ import {
   updateAllRecipesWithCost,
   filterRecipesByTag,
   filterRecipesByName,
+  filterRecipesByCost,
 } from './recipes';
 import {
   getRandomUser,
@@ -32,6 +33,8 @@ var filteredRecipes = [];
 var recipeTags = [];
 var currentUser = {};
 var landingImageRecipeIds = [];
+var minCost = 0;
+var maxCost = Infinity;
 // --- // DOM Nodes // --- //
 // -- containers -- //
 const recipesContainer = document.querySelector('.recipes-container');
@@ -47,7 +50,12 @@ const toBottomBtn = document.getElementById('to-bottom');
 const myRecipesCheckBox = document.getElementById('my-recipes-checkbox');
 const tagFilterInput = document.getElementById('filter-by-tag');
 const nameFilterInput = document.getElementById('filter-by-name');
-const searchBox = document.querySelector('.search-box')
+const searchBox = document.querySelector('.search-box');
+const filterOptions = document.getElementById('filter-options');
+const filterCostForm = document.querySelector('.filter-cost-box');
+const filterTagForm = document.querySelector('.filter-tag-box');
+const minCostFilterInput = document.getElementById('filter-by-min-cost');
+const maxCostFilterInput = document.getElementById('filter-by-max-cost');
 // --- // Event Listeners // --- //
 window.addEventListener('load', start);
 
@@ -105,6 +113,31 @@ toBottomBtn.addEventListener('click', () => {
   });
 });
 
+filterOptions.addEventListener('change', () => {
+  filteredRecipes = allRecipes;
+  displayRecipes(filteredRecipes, recipesContainer);
+  filterTagForm.classList.toggle('hidden');
+  filterCostForm.classList.toggle('hidden');
+});
+
+// filterCostForm.addEventListener('submit', event => {
+//   event.preventDefault();
+// });
+
+minCostFilterInput.addEventListener('change', event => {
+  const min = Number(event.target.value) || 0;
+  minCost = min;
+  filteredRecipes = filterRecipesByCost(allRecipes, minCost, maxCost);
+  displayRecipes(filteredRecipes, recipesContainer);
+});
+
+maxCostFilterInput.addEventListener('change', event => {
+  const max = Number(event.target.value) || Infinity;
+  maxCost = max;
+  filteredRecipes = filterRecipesByCost(allRecipes, minCost, maxCost);
+  displayRecipes(filteredRecipes, recipesContainer);
+});
+
 tagFilterInput.addEventListener('change', event => {
   const tag = event.target.value;
   filteredRecipes = filterRecipesByTag(allRecipes, tag);
@@ -151,7 +184,6 @@ function updateGlobalVariables(recipeData, ingredientData, usersData) {
   allRecipes = updateAllRecipesWithCost(ingredients, recipes);
   allIngredients = ingredients;
   allUsers = users;
-allRecipes.forEach(recipe => console.log(recipe.totalCost))
 
   recipeTags = getAllRecipeTags(allRecipes);
   currentUser = getRandomUser(allUsers);
