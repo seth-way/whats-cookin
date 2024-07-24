@@ -28,7 +28,7 @@ describe("find a recipe's ingredients", () => {
   it('should find the list of ingredient ids for a given recipe', () => {
     const recipeID = 412309;
     const ingredientIDsControlList = [20081, 18372, 1123, 19335];
-
+    
     const ingredientIDsList = findRecipeIngredients(testRecipe);
 
     expect(ingredientIDsList).to.deep.equal(ingredientIDsControlList);
