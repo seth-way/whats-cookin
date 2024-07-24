@@ -140,6 +140,11 @@ main {
   font-size: 1.6vw;
 }
 
+#filter-options {
+  height: 3vw;
+  font-size: 1.6vw;
+}
+
 .filter-tag-box {
   width: 30vw;
   display: flex;
@@ -158,6 +163,17 @@ main {
 
 .filter-by-tag-lable {
   font-size: 1.7vw;
+}
+
+.filter-cost-box {
+  label {
+    font-size: 1.6vw;
+  }
+
+  input {
+    height: 3vw;
+    width: 5vw;
+  }
 }
 
 .search-box {
@@ -186,6 +202,7 @@ container header {
   background: var(--bg-color2);
   color: var(--text2-color);
   display: flex;
+  align-items: center;
   justify-content: space-around;
   flex-direction: row;
   position: sticky;
@@ -193,6 +210,20 @@ container header {
   box-shadow: var(--shadow);
   z-index: 2;
   padding: 1em;
+  form {
+    display: flex;
+    align-items: center;
+    flex-wrap: no-wrap;
+    gap: 0.5em;
+  }
+
+  label {
+    flex-shrink: 2;
+  }
+
+  input {
+    flex-shrink: 1;
+  }
 }
 
 .recipes-container {
