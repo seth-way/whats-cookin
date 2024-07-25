@@ -164,10 +164,11 @@ myRecipesCheckBox.addEventListener('change', event => {
 });
 
 myRecipesCheckBox.addEventListener('click', event => {
+  console.log(event.target.checked)
   if (event.target.checked) {
-    checkbox.setAttribute('aria-checked', 'true');
+    myRecipesCheckBox.setAttribute('aria-checked', 'true');
   } else {
-    checkbox.setAttribute('aria-checked', 'false');
+    myRecipesCheckBox.setAttribute('aria-checked', 'false');
   }
 })
 
