@@ -32,14 +32,12 @@ var featuredRecipe = {};
 var filteredRecipes = [];
 var recipeTags = [];
 var currentUser = {};
-var landingImageRecipeIds = [];
 var minCost = 0;
 var maxCost = Infinity;
 // --- // DOM Nodes // --- //
 // -- containers -- //
 const recipesContainer = document.querySelector('.recipes-container');
 const featuredRecipeContainer = document.getElementById('featured-recipe');
-const landingImages = document.querySelectorAll('.landing-image');
 const recipeCarousel = document.getElementById('recipe-carousel');
 // -- buttons -- //
 const closeFeaturedRecipeBtn = document.getElementById('close-featured-recipe');
@@ -59,10 +57,7 @@ const maxCostFilterInput = document.getElementById('filter-by-max-cost');
 // --- // Event Listeners // --- //
 window.addEventListener('load', start);
 
-document.addEventListener('DOMContentLoaded', () => {
-  myRecipesCheckBox.checked = false;
-  myRecipesCheckBox.setAttribute('aria-checked', 'false')
-})
+document.addEventListener('DOMContentLoaded', setFilterDefaults)
 
 recipesContainer.addEventListener('click', event => {
   const recipeCard = event.target.closest('figure');
@@ -162,13 +157,19 @@ searchBox.addEventListener('submit', event => {
 myRecipesCheckBox.addEventListener('change', event => {
   if (event.target.checked) {
     filteredRecipes = filterUserRecipes(allRecipes, currentUser.recipesToCook);
-    checkbox.setAttribute('aria-checked', 'true');
   } else {
     filteredRecipes = [...allRecipes];
-    checkbox.setAttribute('aria-checked', 'false');
   }
   displayRecipes(filteredRecipes, recipesContainer);
 });
+
+myRecipesCheckBox.addEventListener('click', event => {
+  if (event.target.checked) {
+    checkbox.setAttribute('aria-checked', 'true');
+  } else {
+    checkbox.setAttribute('aria-checked', 'false');
+  }
+})
 
 function start() {
   Promise.all([
@@ -178,9 +179,15 @@ function start() {
   ])
     .then(data => {
       updateGlobalVariables(...data);
-      updateDomWithAPIData(allRecipes, recipeTags, landingImageRecipeIds);
+      updateDomWithAPIData(allRecipes, recipeTags);
     })
     .catch(err => console.log(err));
+}
+
+function setFilterDefaults() {
+  myRecipesCheckBox.checked = false;
+  myRecipesCheckBox.setAttribute('aria-checked', 'false')
+  nameFilterInput.value = '';
 }
 
 function updateGlobalVariables(recipeData, ingredientData, usersData) {

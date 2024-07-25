@@ -24,7 +24,7 @@ const featInstructions = featuredRecipe.querySelector('#featured-instructions');
 // --- // Event Listeners // --- //
 
 // --- // Functions // --- //
-export const updateDomWithAPIData = (recipes, recipeTags, imageIds) => {
+export const updateDomWithAPIData = (recipes, recipeTags) => {
   displayRecipes(recipes, recipesContainer);
   displayRecipeTags(recipeTags);
   createSlider(recipes);

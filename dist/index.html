@@ -12,7 +12,9 @@
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
   <meta charset="UTF-8" />
-  <title>What's Cookin'?</title>
+  <title>
+    What's Cookin'?
+  </title>
 </head>
 
 <body>
@@ -55,7 +57,7 @@
   </section>
   <main>
     <div class="menu-bar">
-      <img src="./images/hamburger.svg" class="hamburger" id="hamburger" alt="hamburger menu icon"/>
+      <img src="./images/hamburger.svg" class="hamburger" id="hamburger" alt="hamburger menu icon" />
       <h1>What's Cookin'?</h1>
     </div>
     <section id="recipe-carousel">
@@ -81,30 +83,46 @@
   <container>
     <header>
       <form id="my-recipes-toggle">
-        <label class="show-my-recipes-label" for="my-recipes-checkbox">
-          Show My Recipes
+        <label id="show-my-recipes-label" for="my-recipes-checkbox">
+          Saved Recipes
         </label>
-        <input type="checkbox" id="my-recipes-checkbox" name="filter my recipes" aria-label="show my recipes checkbox" aria-checked="false">
+        <input type="checkbox" id="my-recipes-checkbox" name="filter my recipes"
+          aria-describedby="show-my-recipes-label" aria-checked="false">
       </form>
       <form class="filter-options">
-        <label for="filter-options" class="filter-by-tag-label">Filter By</label>
+        <label for="filter-options" class="filter-by-tag-label">
+          Filter Type
+        </label>
         <select name="filter options menu" id="filter-options" aria-label="recipe filter options">
-          <option value="tag" selected>Tag</option>
-          <option value="cost">Cost</option>
+          <option value="tag" selected>
+            Tag
+          </option>
+          <option value="cost">
+            Cost
+          </option>
         </select>
       </form>
       <form class="filter-tag-box">
-        <label for="filter-by-tag" class="filter-by-tag-label">Tags</label>
-        <select name="recipe tags filter" id="filter-by-tag" aria-label="filter recipes by tag"></select>
+        <label for="filter-by-tag" id="filter-by-tag-label">
+          Tags
+        </label>
+        <select name="recipe tags filter" id="filter-by-tag" aria-labelledby="filter-by-tag-label"></select>
       </form>
       <form class="filter-cost-box hidden">
-        <label for="filter-by-cost-min" class="filter-by-cost-label" id="filter-by-cost-min">Min: </label>
-        <input name="recipe minimum cost filter" id="filter-by-min-cost" type="text" aria-label="filter recipes by minimum cost">
-        <label for="filter-by-cost-max" class="filter-by-cost-label" id="filter-by-cost-max">Max: </label>
-        <input name="recipe maximum cost filter" id="filter-by-max-cost" type="text" aria-label="filter recipes by maximum cost">
+        <label for="filter-by-cost-min" class="filter-by-cost-label" id="filter-by-cost-min">
+          Min:
+        </label>
+        <input name="recipe minimum cost filter" id="filter-by-min-cost" type="text"
+          aria-label="filter recipes by minimum cost">
+        <label for="filter-by-cost-max" class="filter-by-cost-label" id="filter-by-cost-max">
+          Max:
+        </label>
+        <input name="recipe maximum cost filter" id="filter-by-max-cost" type="text"
+          aria-label="filter recipes by maximum cost">
       </form>
       <form class="search-box">
-        <input class="search-by-name" type="text" placeholder="Search by Name" id="filter-by-name" aria-label="search recipes by name"></input>
+        <input class="search-by-name" type="text" placeholder="Search by Name" id="filter-by-name"
+          aria-label="search recipes by name"></input>
       </form>
       <button class="icon-button" id="to-top" aria-label="scroll to landing page">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -113,7 +131,9 @@
         </svg>
       </button>
     </header>
-    <section class="recipes-container">Recipes List</section>
+    <section class="recipes-container">
+      Recipes List
+    </section>
   </container>
 </body>
 
