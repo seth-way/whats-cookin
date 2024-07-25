@@ -89,18 +89,18 @@
         <input type="checkbox" id="my-recipes-checkbox" name="filter my recipes"
           aria-describedby="show-my-recipes-label" aria-checked="false">
       </form>
-      <form class="filter-options">
-        <label for="filter-options" class="filter-by-tag-label">
+      <form id="filter-options">
+        <label id="filter-by-tag-label">
           Filter Type
         </label>
-        <select name="filter options menu" id="filter-options" aria-label="recipe filter options">
-          <option value="tag" selected>
-            Tag
-          </option>
-          <option value="cost">
-            Cost
-          </option>
-        </select>
+        <div id="filter-toggle-container">
+          <label>
+            <input type="radio" name="filter-options" id="tag-filter-toggle" value="tag" checked> Tag
+          </label>
+          <label>
+            <input type="radio" name="filter-options" id="cost-filter-toggle" value="cost"> Cost
+          </label>
+        </div>
       </form>
       <form class="filter-tag-box">
         <label for="filter-by-tag" id="filter-by-tag-label">

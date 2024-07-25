@@ -189,7 +189,17 @@ function setFilterDefaults() {
   myRecipesCheckBox.checked = false;
   myRecipesCheckBox.setAttribute('aria-checked', 'false')
   nameFilterInput.value = '';
+  filterTagForm.classList.remove('hidden');
+  filterCostForm.classList.add('hidden');
+
+  const tagRadio = document.querySelector('input[name="filter-options"][value="tag"]')
+  const costRadio = document.querySelector('input[name="filter-options"][value="cost"]')
+
+  tagRadio.checked = tagRadio.defaultChecked;
+  costRadio.checked = costRadio.defaultChecked;
 }
+
+
 
 function updateGlobalVariables(recipeData, ingredientData, usersData) {
   const { recipes } = recipeData;
