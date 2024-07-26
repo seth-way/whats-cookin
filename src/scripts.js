@@ -167,25 +167,19 @@ rangeInputSliders.forEach(input => {
   });
 });
 
-minCostTextInput.addEventListener('change', event => {
-  const newValue = Number(event.target.value) || 0;
-  if (newValue < rangeMax) {
-    rangeMin = newValue;
-    costFilterSliders.setMinFromText(rangeMin);
-    filteredRecipes = filterRecipesByCost(allRecipes, rangeMin, rangeMax);
-    displayRecipes(filteredRecipes, recipesContainer);
-  }
-});
+// minCostFilterInput.addEventListener('change', event => {
+//   const min = Number(event.target.value) || 0;
+//   minCost = min;
+//   filteredRecipes = filterRecipesByCost(allRecipes, minCost, maxCost);
+//   displayRecipes(filteredRecipes, recipesContainer);
+// });
 
-maxCostTextInput.addEventListener('change', event => {
-  const newValue = Number(event.target.value) || maxCost;
-  if (newValue > rangeMin) {
-    rangeMax = newValue;
-    costFilterSliders.setMaxFromText(rangeMax);
-    filterRecipesByCost(allRecipes, rangeMin, rangeMax);
-    displayRecipes(filteredRecipes, recipesContainer);
-  }
-});
+// maxCostFilterInput.addEventListener('change', event => {
+//   const max = Number(event.target.value) || Infinity;
+//   maxCost = max;
+//   filteredRecipes = filterRecipesByCost(allRecipes, minCost, maxCost);
+//   displayRecipes(filteredRecipes, recipesContainer);
+// });
 
 tagFilterInput.addEventListener('change', event => {
   const tag = event.target.value;
@@ -235,6 +229,7 @@ function updateGlobalVariables(recipeData, ingredientData, usersData) {
   allUsers = users;
   // initiate cost input sliders
   maxCost = getMaxRecipeCost(allRecipes);
+  console.log('max cost:', maxCost);
   costFilterSliders = createCostFilterSliders(maxCost);
 
   recipeTags = getAllRecipeTags(allRecipes);
