@@ -83,8 +83,3 @@ export const getAllRecipeTags = recipesList => {
 
 export const getRandomRecipe = recipes =>
   recipes[Math.floor(Math.random() * recipes.length)];
-
-export const getMaxRecipeCost = recipes => {
-  const sortedRecipes = [...recipes].sort((a, b) => b.totalCost - a.totalCost);
-  return Math.ceil(sortedRecipes[0].totalCost);
-}
