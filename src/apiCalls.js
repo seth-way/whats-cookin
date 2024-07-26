@@ -13,8 +13,8 @@ export const fetchData = type => {
   return data;
 };
 
-export const postData = (type, resource) => {
-  return fetch(`http://localhost:3001/api/v1/${type}`, {
+export const postData = (endpoint, resource) => {
+  return fetch(`http://localhost:3001/api/v1/${endpoint}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

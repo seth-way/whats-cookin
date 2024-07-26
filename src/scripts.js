@@ -44,7 +44,6 @@ var costFilterSliders;
 // -- containers -- //
 const recipesContainer = document.querySelector('.recipes-container');
 const featuredRecipeContainer = document.getElementById('featured-recipe');
-const landingImages = document.querySelectorAll('.landing-image');
 const recipeCarousel = document.getElementById('recipe-carousel');
 // -- buttons -- //
 const closeFeaturedRecipeBtn = document.getElementById('close-featured-recipe');
@@ -70,6 +69,8 @@ const filterTagForm = document.querySelector('.filter-tag-box');
 // const maxCostFilterInput = document.getElementById('filter-by-max-cost');
 // --- // Event Listeners // --- //
 window.addEventListener('load', start);
+
+document.addEventListener('DOMContentLoaded', setFilterDefaults)
 
 recipesContainer.addEventListener('click', event => {
   const recipeCard = event.target.closest('figure');
@@ -212,6 +213,15 @@ myRecipesCheckBox.addEventListener('change', event => {
   displayRecipes(filteredRecipes, recipesContainer);
 });
 
+myRecipesCheckBox.addEventListener('click', event => {
+  console.log(event.target.checked)
+  if (event.target.checked) {
+    myRecipesCheckBox.setAttribute('aria-checked', 'true');
+  } else {
+    myRecipesCheckBox.setAttribute('aria-checked', 'false');
+  }
+})
+
 function start() {
   Promise.all([
     fetchData('recipes'),
@@ -220,9 +230,23 @@ function start() {
   ])
     .then(data => {
       updateGlobalVariables(...data);
-      updateDomWithAPIData(allRecipes, recipeTags, landingImageRecipeIds);
+      updateDomWithAPIData(allRecipes, recipeTags);
     })
     .catch(err => console.log(err));
+}
+
+function setFilterDefaults() {
+  myRecipesCheckBox.checked = false;
+  myRecipesCheckBox.setAttribute('aria-checked', 'false')
+  nameFilterInput.value = '';
+  filterTagForm.classList.remove('hidden');
+  filterCostForm.classList.add('hidden');
+
+  const tagRadio = document.querySelector('input[name="filter-options"][value="tag"]')
+  const costRadio = document.querySelector('input[name="filter-options"][value="cost"]')
+
+  tagRadio.checked = tagRadio.defaultChecked;
+  costRadio.checked = costRadio.defaultChecked;
 }
 
 function updateGlobalVariables(recipeData, ingredientData, usersData) {

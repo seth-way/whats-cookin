@@ -16,7 +16,6 @@ import {
   recipesWithSideDishTag,
 } from '../src/data/recipes-sample';
 import { ingredientSampleData } from '../src/data/ingredients-sample';
-// import { describe } from 'mocha';
 
 const testRecipe = recipeSampleData[0];
 
