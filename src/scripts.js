@@ -199,8 +199,6 @@ function setFilterDefaults() {
   costRadio.checked = costRadio.defaultChecked;
 }
 
-
-
 function updateGlobalVariables(recipeData, ingredientData, usersData) {
   const { recipes } = recipeData;
   const { ingredients } = ingredientData;
