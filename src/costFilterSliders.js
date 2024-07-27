@@ -1,7 +1,4 @@
 export const createCostFilterSliders = maxCost => {
-  // let rangeMin = 0;
-  // let rangeMax = maxCost;
-
   const minCostTextInput = document.getElementById('min-cost-filter');
   const maxCostTextInput = document.getElementById('max-cost-filter');
   const rangeInputTrack = document.getElementById('cost-range-track');
@@ -27,6 +24,17 @@ export const createCostFilterSliders = maxCost => {
     maxCostTextInput.value = rangeInputSliders[1].value;
     return parseInt(rangeInputSliders[1].value);
   };
+
+  const setMinFromText = min => {
+    rangeInputSliders[0].value = min;
+    rangeInputTrack.style.left = (min / rangeInputSliders[0].max) * 100 + '%';
+  };
+
+  const setMaxFromText = max => {
+    rangeInputSliders[1].value = max;
+    rangeInputTrack.style.right =
+      100 - (max / rangeInputSliders[1].max) * 100 + '%';
+  };
   // initiate sliders
   rangeInputSliders.forEach(input => {
     input.setAttribute('max', maxCost);
@@ -37,7 +45,6 @@ export const createCostFilterSliders = maxCost => {
   setMaxCostOutput();
   minRangeFill();
   maxRangeFill();
-  // slider event listener callback
   
 
   return {
@@ -45,5 +52,7 @@ export const createCostFilterSliders = maxCost => {
     maxRangeFill,
     setMinCostOutput,
     setMaxCostOutput,
+    setMinFromText,
+    setMaxFromText,
   };
 };
