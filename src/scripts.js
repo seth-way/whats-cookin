@@ -34,8 +34,6 @@ var featuredRecipe = {};
 var filteredRecipes = [];
 var recipeTags = [];
 var currentUser = {};
-var landingImageRecipeIds = [];
-// var minCost = 0;
 var maxCost = 9999;
 var rangeMin = 0;
 var rangeMax = maxCost;
@@ -65,8 +63,6 @@ const searchBox = document.querySelector('.search-box');
 const filterOptions = document.getElementById('filter-options');
 const filterCostForm = document.querySelector('.cost-range-slider-box');
 const filterTagForm = document.querySelector('.filter-tag-box');
-// const minCostFilterInput = document.getElementById('filter-by-min-cost');
-// const maxCostFilterInput = document.getElementById('filter-by-max-cost');
 // --- // Event Listeners // --- //
 window.addEventListener('load', start);
 
@@ -168,25 +164,6 @@ rangeInputSliders.forEach(input => {
   });
 });
 
-minCostTextInput.addEventListener('change', event => {
-  const newValue = Number(event.target.value) || 0;
-  if (newValue < rangeMax) {
-    rangeMin = newValue;
-    costFilterSliders.setMinFromText(rangeMin);
-    filteredRecipes = filterRecipesByCost(allRecipes, rangeMin, rangeMax);
-    displayRecipes(filteredRecipes, recipesContainer);
-  }
-});
-
-maxCostTextInput.addEventListener('change', event => {
-  const newValue = Number(event.target.value) || maxCost;
-  if (newValue > rangeMin) {
-    rangeMax = newValue;
-    costFilterSliders.setMaxFromText(rangeMax);
-    filterRecipesByCost(allRecipes, rangeMin, rangeMax);
-    displayRecipes(filteredRecipes, recipesContainer);
-  }
-});
 
 tagFilterInput.addEventListener('change', event => {
   const tag = event.target.value;

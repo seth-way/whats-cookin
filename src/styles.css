@@ -240,6 +240,7 @@ main {
   margin-top: 30%;
 }
 
+
 .search-box {
   width: 30vw;
   min-width: 120px;
@@ -280,6 +281,7 @@ container header {
     flex-wrap: nowrap;
     gap: 0.25em;
     width: max-content;
+    text-wrap: nowrap;
     margin: 0.5em 0.25em;
   }
 
