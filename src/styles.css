@@ -93,14 +93,6 @@ h1 {
   top: 0;
 }
 
-.hamburger {
-  width: 6vw;
-  position: absolute;
-  left: 2%;
-  top: 50%;
-  transform: translate(0%, -50%);
-}
-
 main {
   display: flex;
   flex-direction: column;
