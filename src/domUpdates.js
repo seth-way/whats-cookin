@@ -49,10 +49,16 @@ export const createRecipeCard = recipe => {
 
 export const displayRecipes = (recipeList, recipesContainer) => {
   recipesContainer.innerHTML = '';
-  recipeList.forEach(recipe => {
-    const recipeCard = createRecipeCard(recipe);
-    recipesContainer.appendChild(recipeCard);
-  });
+  if (!recipeList.length) {
+    const noRecipesMessage = document.createElement('h2');
+    noRecipesMessage.innerText = 'No Recipes Match Your Search.';
+    recipesContainer.appendChild(noRecipesMessage);
+  } else {
+    recipeList.forEach(recipe => {
+      const recipeCard = createRecipeCard(recipe);
+      recipesContainer.appendChild(recipeCard);
+    });
+  }
 };
 
 export const createImage = (imageSource, imageAlt) => {

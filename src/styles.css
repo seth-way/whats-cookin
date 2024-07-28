@@ -108,7 +108,7 @@ main {
   top: 1em;
   right: 1em;
 }
-/* --- Recipes Container ---*/
+/* --- Recipe Filter Options ---*/
 #my-recipes-toggle {
   display: flex;
   flex-direction: row;
@@ -232,7 +232,6 @@ main {
   margin-top: 30%;
 }
 
-
 .search-box {
   width: 30vw;
   min-width: 120px;
@@ -299,6 +298,10 @@ container header {
   background-color: var(--text3-color);
   font-size: min(1.6vw, 23px);
   font-weight: bold;
+
+  h2 {
+    color: white;
+  }
 }
 
 .recipe-card {
