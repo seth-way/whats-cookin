@@ -13,7 +13,7 @@ const slideNodes = document.querySelectorAll('.swiper-slide');
 const updateSlide = (node, recipe) => {
   node.id = `${recipe.id}-slide`;
 
-  const title = document.createElement('p');
+  const title = document.createElement('h2');
   title.innerText = recipe.name;
   node.appendChild(title);
 
