@@ -164,6 +164,25 @@ rangeInputSliders.forEach(input => {
   });
 });
 
+minCostTextInput.addEventListener('change', event => {
+  const newValue = Number(event.target.value) || 0;
+  if (newValue < rangeMax) {
+    rangeMin = newValue;
+    costFilterSliders.setMinFromText(rangeMin);
+    filteredRecipes = filterRecipesByCost(allRecipes, rangeMin, rangeMax);
+    displayRecipes(filteredRecipes, recipesContainer);
+  }
+});
+
+maxCostTextInput.addEventListener('change', event => {
+  const newValue = Number(event.target.value) || maxCost;
+  if (newValue > rangeMin) {
+    rangeMax = newValue;
+    costFilterSliders.setMaxFromText(rangeMax);
+    filterRecipesByCost(allRecipes, rangeMin, rangeMax);
+    displayRecipes(filteredRecipes, recipesContainer);
+  }
+});
 
 tagFilterInput.addEventListener('change', event => {
   const tag = event.target.value;
