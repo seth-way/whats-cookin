@@ -38,11 +38,13 @@
         <article id="featured-instructions"></article>
       </div>
     </div>
-    <button class="icon-button" id="close-featured-recipe" aria-label="close featured recipe" aria-controls="featured-recipe">
+    <button class="icon-button" id="close-featured-recipe" aria-label="close featured recipe"
+      aria-controls="featured-recipe">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <path
           d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
-      </svg>
+        </svg>
+        <label>Close this recipe</label>
     </button>
     <button class="icon-button heart" aria-label="add or remove recipe to my recipe's list" aria-pressed="false">
       <svg id='heart-icon-outlined' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -73,6 +75,7 @@
       </div>
     </section>
     <button class="icon-button" id="to-bottom" aria-label="scroll to all recipes section">
+      <label>Show all Recipes</label>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <path
           d="M256 0a256 256 0 1 0 0 512A256 256 0 1 0 256 0zM135 241c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l87 87 87-87c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L273 345c-9.4 9.4-24.6 9.4-33.9 0L135 241z" />
@@ -94,10 +97,12 @@
         </label>
         <div id="filter-toggle-container">
           <label>
-            <input type="radio" name="filter-options" id="tag-filter-toggle" value="tag" checked aria-labelledby="filter-type-label"> Tag
+            <input type="radio" name="filter-options" id="tag-filter-toggle" value="tag" checked
+              aria-labelledby="filter-type-label"> Tag
           </label>
           <label>
-            <input type="radio" name="filter-options" id="cost-filter-toggle" value="cost" aria-labelledby="filter-type-label"> Cost
+            <input type="radio" name="filter-options" id="cost-filter-toggle" value="cost"
+              aria-labelledby="filter-type-label"> Cost
           </label>
         </div>
       </form>
@@ -110,7 +115,7 @@
       <form class="cost-range-slider-box hidden">
         <div>
           <label for="min-cost-filter" class="filter-label">min. $</label>
-          <input name="min cost filter" type="text" id="min-cost-filter" class="cost-filter"/>
+          <input name="min cost filter" type="text" id="min-cost-filter" class="cost-filter" />
         </div>
         <div class="double-range-slider">
           <span class="range-track" id="cost-range-track"></span>
@@ -119,7 +124,7 @@
         </div>
         <div>
           <label for="max-cost-filter" class="filter-label">max. $</label>
-          <input name="max cost filter" type="text" id="max-cost-filter" class="cost-filter"/>
+          <input name="max cost filter" type="text" id="max-cost-filter" class="cost-filter" />
         </div>
       </form>
       <form class="search-box">
@@ -127,6 +132,7 @@
           aria-label="search recipes by name"></input>
       </form>
       <button class="icon-button" id="to-top" aria-label="scroll to landing page">
+        <label>To Top</label>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path
             d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM377 271c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-87-87-87 87c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9L239 167c9.4-9.4 24.6-9.4 33.9 0L377 271z" />

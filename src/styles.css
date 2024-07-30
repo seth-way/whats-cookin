@@ -42,13 +42,18 @@ body > * {
 }
 
 .icon-button {
-  width: 40px;
-  aspect-ratio: 1 / 1;
+  /* width: 40px; */
+  height: 40px;
+  aspect-ratio: 3 / 1;
   border: none;
   padding: 0;
   background-color: rgba(0, 0, 0, 0);
   transition: all 0.4s ease-in-out;
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
 
   &:hover {
     transform: scale(1.1);
@@ -56,8 +61,8 @@ body > * {
 }
 
 .icon-button > svg {
-  width: 100%;
-  height: auto;
+  height: 100%;
+  width: auto;
   opacity: 1;
   fill: var(--accent);
 
@@ -84,7 +89,7 @@ h1 {
 .menu-bar {
   display: flex;
   flex-direction: row;
-  width: 80vw;
+  width: 65vw;
   justify-content: center;
   position: relative;
   background: var(--bg-color2);
@@ -426,12 +431,12 @@ article h4 {
 
 #close-featured-recipe {
   top: 1em;
-  right: 1em;
+  left: 1em;
 }
 
 .heart {
   top: 1em;
-  left: 1em;
+  right: 1em;
 }
 /*--- Carousel ---*/
 #recipe-carousel {
