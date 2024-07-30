@@ -100,8 +100,6 @@ export const updateFeaturedRecipe = (recipe, user, allIngredients) => {
 
   updateHeartIconsByUser(recipe.id, user);
   const scrollableDiv = featuredRecipe.querySelector('div');
-  console.log('top of scrollable div', scrollableDiv.scrollTop);
-  console.log('top of instructions', featInstructions.scrollTop);
 };
 
 const updateHeartIconsByUser = (recipeId, user) => {

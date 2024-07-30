@@ -25,7 +25,7 @@ import {
   removeRecipeFromUserList,
 } from './users';
 import { createCostFilterSliders } from './costFilterSliders';
-import { fetchData } from './apiCalls';
+import { fetchData, postData } from './apiCalls';
 // --- // Variables // --- //
 var allRecipes = [];
 var allUsers = [];
@@ -66,7 +66,7 @@ const filterTagForm = document.querySelector('.filter-tag-box');
 // --- // Event Listeners // --- //
 window.addEventListener('load', start);
 
-document.addEventListener('DOMContentLoaded', setFilterDefaults)
+document.addEventListener('DOMContentLoaded', setFilterDefaults);
 
 recipesContainer.addEventListener('click', event => {
   const recipeCard = event.target.closest('figure');
@@ -96,15 +96,16 @@ closeFeaturedRecipeBtn.addEventListener('click', () => {
 
 toggleMyRecipesBtn.addEventListener('click', () => {
   const icons = toggleMyRecipesBtn.querySelectorAll('svg');
-  icons.forEach(icon => {
-    icon.classList.toggle('hidden');
-  });
-
-  const { id } = featuredRecipe;
-  if (currentUser.recipesToCook.includes(id)) {
-    currentUser = removeRecipeFromUserList(currentUser, id);
-  } else {
-    currentUser = addRecipeToUserList(currentUser, id);
+  if (!icons[0].classList.contains('hidden')) {
+    const data = { userID: currentUser.id, recipeID: featuredRecipe.id };
+    postData('usersRecipes', data)
+      .then(() => {
+        icons.forEach(icon => {
+          icon.classList.toggle('hidden');
+        });
+        currentUser.recipesToCook.push(featuredRecipe.id);
+      })
+      .catch(err => alert(err));
   }
 });
 
@@ -210,13 +211,12 @@ myRecipesCheckBox.addEventListener('change', event => {
 });
 
 myRecipesCheckBox.addEventListener('click', event => {
-  console.log(event.target.checked)
   if (event.target.checked) {
     myRecipesCheckBox.setAttribute('aria-checked', 'true');
   } else {
     myRecipesCheckBox.setAttribute('aria-checked', 'false');
   }
-})
+});
 
 function start() {
   Promise.all([
@@ -233,13 +233,17 @@ function start() {
 
 function setFilterDefaults() {
   myRecipesCheckBox.checked = false;
-  myRecipesCheckBox.setAttribute('aria-checked', 'false')
+  myRecipesCheckBox.setAttribute('aria-checked', 'false');
   nameFilterInput.value = '';
   filterTagForm.classList.remove('hidden');
   filterCostForm.classList.add('hidden');
 
-  const tagRadio = document.querySelector('input[name="filter-options"][value="tag"]')
-  const costRadio = document.querySelector('input[name="filter-options"][value="cost"]')
+  const tagRadio = document.querySelector(
+    'input[name="filter-options"][value="tag"]'
+  );
+  const costRadio = document.querySelector(
+    'input[name="filter-options"][value="cost"]'
+  );
 
   tagRadio.checked = tagRadio.defaultChecked;
   costRadio.checked = costRadio.defaultChecked;
