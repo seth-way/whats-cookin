@@ -21,6 +21,10 @@ This app is a recipe tracking / meal planning application that allows users to v
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
 
+![site natigation preview](dist/images/page-navigation.gif)
+
+![filtering recipes demo](dist/images/filtering.gif)
+
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
 
@@ -43,3 +47,7 @@ This app was built by [Carissa Hluchan](https://github.com/CarissaHluchan), [Wil
 
 ### Wins + Challenges:
 [//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+
+- Our app crashed when conflicting merges did not present themselves as 'merge conflicts.' By visitting our commit history and utilizing a staging branch, we were able to introduce and remove all the appropriate code to successfully complete the merge.
+
+- The recipe cost slider is a complex UI component made of 2 separate slider inputs. In order to make working with it easier, we used closures so that the cost-slider object had access to all the necessary variables.
