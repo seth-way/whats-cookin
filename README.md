@@ -1,4 +1,4 @@
-# 🍳🔥 [What's Cooking](https://carissahluchan.github.io/whats-cookin/) 🔥🍳
+# 🍳🔥 [What's Cooking](https://seth-way.github.io/whats-cookin/) 🔥🍳
 
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
